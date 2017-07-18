@@ -27,14 +27,14 @@ CKEDITOR.dialog.add( 'blockformatHelp', function( editor ) {
 
       var node, html;
 
-      node = document.getElementById('tab_inline');
-      html = h2(lang.helpInlineTitle);
-      html += list('ul', lang.helpInlineItems);
-      node.innerHTML = html;
-
       node = document.getElementById('tab_block');
       html = h2(lang.helpBlockTitle);
       html += list('ul', lang.helpBlockItems);
+      node.innerHTML = html;
+
+      node = document.getElementById('tab_inline');
+      html = h2(lang.helpInlineTitle);
+      html += list('ul', lang.helpInlineItems);
       node.innerHTML = html;
 
       node = document.getElementById('tab_heading');

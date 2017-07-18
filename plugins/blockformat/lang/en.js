@@ -9,21 +9,21 @@ CKEDITOR.plugins.setLang( 'blockformat', 'en', {
   codesnippetLabel: 'Code snippet',
   helpLabel:  'Help',
   helpInlineLabel: 'Inline Style',
-  helpInlineTitle: 'Inline Style features',
+  helpInlineTitle: 'Inline Style Features',
   helpInlineItems: [
     'Inline style description 1.',
     'Inline style description 2.',
     'Inline style description 3.'
   ],
   helpBlockLabel: 'Block Style',
-  helpBlockTile: 'Block Style',
+  helpBlockTitle: 'Block Style Features',
   helpBlockItems: [
-    'Block style description 1.',
-    'Block style description 2.',
+    'Blocks of content include paragraphs, list items, tables or groups.',
+    'Applying.',
     'Block style description 3.'
   ],
   helpHeadingLabel: 'Headings',
-  helpHeadingTile: 'Headings',
+  helpHeadingTitle: 'Heading Features',
   helpHeadingItems: [
     'Heading semantics description 1.',
     'Heading semantics description 2.',
