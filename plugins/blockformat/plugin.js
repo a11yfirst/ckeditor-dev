@@ -50,7 +50,7 @@
  * @member CKEDITOR.config
  */
 
-CKEDITOR.config.blocksnippets = 'default';
+CKEDITOR.config.blocksnippets = 'default,library';
 
 
 /**
@@ -68,7 +68,8 @@ CKEDITOR.config.blocksnippets = 'default';
  * @member CKEDITOR.config
  */
 CKEDITOR.config.blocksnippet_files = [
-  CKEDITOR.getUrl( 'plugins/blockformat/blocksnippets/default.js' )
+  CKEDITOR.getUrl( 'plugins/blockformat/blocksnippets/default.js' ),
+  CKEDITOR.getUrl( 'plugins/blockformat/blocksnippets/library.js' )
 ];
 
 
@@ -126,9 +127,7 @@ CKEDITOR.plugins.add( 'blockformat', {
       exec: function( editor, blockSnippetId ) {
         var item = items[ blockSnippetId ];
         if ( item ) {
-          console.log('[BlockFormatSnippet]: ' + item.html);
-          console.log(editor);
-//          editor.insertHTML(item.html);
+          editor.insertHtml(item.html);
         }
       },
     });
