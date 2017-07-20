@@ -92,7 +92,8 @@ CKEDITOR.plugins.add( 'blockformat', {
     var config = editor.config,
         lang = editor.lang.blockformat,
         items = {},
-        menu_order = 0;
+        menu_order = 0
+        menu_groups  = [];
    
     // Menuitem commands
     var blockquoteCmd = 'blockquote';
@@ -101,6 +102,7 @@ CKEDITOR.plugins.add( 'blockformat', {
     // Change behavior of menubutton with text label
     CKEDITOR.plugins.get( 'a11yfirst' ).overrideButtonSetState();
 
+    menu_groups.push('blockformatMain');
 
     items.blockquote = {
       label: lang.blockquoteLabel,
@@ -134,6 +136,7 @@ CKEDITOR.plugins.add( 'blockformat', {
 
     // Create item entry for each block snippet in config
 
+
     var allBlockSnippets = ( config.blocksnippets || 'default' ).split( ',' );
     var blockSnippetIds = [];
 
@@ -149,15 +152,26 @@ CKEDITOR.plugins.add( 'blockformat', {
           label: blockSnippet.label,
           blockSnippetId: blockSnippet.id,
           html: blockSnippet.html,
-          group: 'blockformatSnippet',
+          group: blockSnippet.group ? blockSnippet.group : 'blockformatSnippet',
           order: menu_order++,
           onClick: function() {
             editor.execCommand( 'blockformatSnippet', this.blockSnippetId );
           },
         };
 
+        if (blockSnippet.group) {
+          if (!menu_groups.includes(blockSnippet.group)) {
+            menu_groups.push(blockSnippet.group);
+          }
+        }
+        else {
+          if (!menu_groups.includes('blockformatSnippet')) {
+            menu_groups.push('blockformatSnippet');
+          }          
+        }  
       }
     }
+
 
     // Add Help item
 
@@ -176,9 +190,10 @@ CKEDITOR.plugins.add( 'blockformat', {
     };
 
     // Initialize menu groups
-    editor.addMenuGroup( 'blockformatMain', 1 );
-    editor.addMenuGroup( 'blockformatSnippet', 2 );
-    editor.addMenuGroup( 'blockformatHelp', 3 );
+    for(var i=0; i < menu_groups.length; i++) {
+      editor.addMenuGroup( menu_groups[i], (i+1) );
+    }
+
     // editor.addMenuGroup( 'other' );
     editor.addMenuItems( items );
 
