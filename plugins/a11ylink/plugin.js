@@ -54,6 +54,12 @@
       CKEDITOR.addCss( cssWithDir( 'ltr' ) + cssWithDir( 'rtl' ) );
 
       CKEDITOR.document.appendStyleSheet( this.path + 'styles/a11ylink.css' );
+
+      // Check to see if drupal stylesheet needs to be loaded
+      if (this.isDrupal()) {
+        console.log('loading: ' + this.path + 'styles/a11ylink-drupal.css');
+        CKEDITOR.document.appendStyleSheet( this.path + 'styles/a11ylink-drupal.css' );
+      }
     },
 
     init: function( editor ) {
