@@ -13,6 +13,13 @@
     // jscs:enable maximumLineLength
     icons: 'anchor,anchor-rtl,link,unlink', // %REMOVE_LINE_CORE%
     hidpi: true, // %REMOVE_LINE_CORE%
+
+    // Test if CKEditor is installed in Drupal by looking at path
+    // information specific to the Drupal A11yFirst Module
+    isDrupal: function() {
+      return this.path.toLowerCase().indexOf('/a11yfirst/js/plugins/') > 0;
+    },
+
     onLoad: function() {
       // Add the CSS styles for anchor placeholders.
       var iconPath = CKEDITOR.getUrl( this.path + 'images' + ( CKEDITOR.env.hidpi ? '/hidpi' : '' ) + '/anchor.png' ),
