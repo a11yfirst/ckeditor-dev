@@ -2,6 +2,22 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.1.2 – 13 Mar 2019
+
+### Updates
+
+* Add CSS styling support for A11yFirst Drupal module
+  * Conditionally load separate stylesheets for a11yfirsthelp, a11yimage and
+    a11ylink plugins when running in a Drupal environment
+
+* Update Usability Test Pages
+  * Add long description content for complex images
+
+* Delete folders no longer needed or used:
+  * skins/a11yfirst
+  * plugins/balloonpanel/skins/a11yfirst
+  * plugins/a11yformat
+
 ## v1.1.1 – 1 Mar 2019
 
 ### Updates
