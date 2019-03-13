@@ -1,27 +1,31 @@
 # Creating a new distribution
 
-1. Depending on the time since the last distribution, it may be desirable to
-   merge in all changes from the upstream repository from which plugins-dev
-   was forked, nameley `https://github.com/ckeditor/ckeditor-dev`. Roughly
-   speaking, this involves the following two steps:
-   1. merge the upstream/master branch into the local master branch
-   1. merge the local master branch into the a11yfirst branch
+## Preparations
+
+1. Ensure that the `plugins-dev` working copy `a11yfirst-master` branch
+   includes all changes needed for the new distribution:
+   * Update the version number in the a11yfirst-help.js file
+   * Update `CHANGELOG.md` by adding a new version description summary
+   * Update `DISTRIBUTION.md` as needed
+   * Update scripts/syncdist.sh file when necessary
+   * Commit all changes and push to origin
+
+## CKEditor Builder
 
 1. Use the [CKEditor Builder](https://ckeditor.com/cke4/builder) app to create
    a new build, following the instructions in `config.js`.
 
    * Note: If nothing has changed with the build process since the last
      distribution, you can upload the `build-config.js` from the previous
-     distribution to Builder.
+     distribution to the Builder app
 
 1. Download the Builder ZIP file and expand it to a new folder
 
-1. Make sure that the `plugins-dev` working copy is clean and includes all the
-   changes needed for the new distribution, including the new version number
-   and updates to the `CHANGELOG.md` and scripts/syncdist.sh files.
+## Update `distribution` repository working copy
 
-1. Change directory to the `distribution` working copy folder and issue the
-   following command to make sure it is up to date with origin:
+1. Change directory to the `distribution` working copy folder, checkout the
+   `master` branch, and issue the following command to make sure it is up to
+   date with origin:
 
    `git pull`
 
@@ -54,9 +58,11 @@
 
    `git add -A`
 
-   `git commit -m "Initial commit for version <N.N.N>"`
+   `git commit -m "Initial commit for version <n.n.n>"`
 
    `git push`
+
+## Tag the new release for both `distribution` and `plugins-dev`
 
 1. Create a new tag for `distribution` and push it to origin
 
@@ -67,3 +73,21 @@
    `git push origin <tag-name>`
 
 1. Create a new tag for `plugins-dev` (using same commands as previous step)
+
+## Setup development environment for next version
+
+1. Update the `stable` branches for both `plugins-dev` and `distribution` by
+   merging in the new tags.
+
+1. After creating a new distribution version, depending on how much time has
+   elapsed since the last distribution, it may be desirable to merge in all
+   changes from the upstream repository from which plugins-dev was forked,
+   namely `https://github.com/ckeditor/ckeditor-dev`. Roughly speaking, this
+   involves the following two steps:
+   1. merge the upstream/master branch into the local master branch
+   1. merge the local master branch into the a11yfirst branch
+
+1. By merging in the upstream changes after a new distribution has been
+   released, it allows for new development to proceed with the latest CKEditor
+   changes, while also allowing time for developers to discover whether any of
+   those changes have had an unexpected effect on any of our plugins.
