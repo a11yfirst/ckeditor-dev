@@ -62,11 +62,13 @@
 */
 
 CKEDITOR.editorConfig = function ( config ) {
-  config.format_tags = 'h1;h2;h3;h4;p;pre;address';
-  config.allow_only_one_h1 = true;
   config.height = 480;
   config.skin = 'moono-lisa';
   config.startupFocus = true;
+
+  // a11yheading configuration
+  config.allow_only_one_h1 = true;
+  config.format_tags = 'h1;h2;h3;h4;p;pre;address';
 
   config.plugins =
     'a11yhelp,' +
@@ -179,6 +181,7 @@ CKEDITOR.editorConfig = function ( config ) {
 
 };
 
+// a11ystylescombo configuration
 CKEDITOR.stylesSet.add ( 'default', [
   { name: 'Strong',           element: 'strong', overrides: 'b' },
   { name: 'Emphasis',         element: 'em' , overrides: 'i' },
