@@ -9,6 +9,16 @@ CKEDITOR.plugins.add( 'a11ystylescombo', {
   // jscs:enable maximumLineLength
 
   init: function( editor ) {
+    // Abort when another plugin with overlapping functionality is to be loaded
+    var pluginName = 'a11ystylescombo',
+        conflictList = [ 'stylescombo' ],
+        lang = editor.lang.a11ystylescombo;
+
+    if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
+      alert( lang.pluginConflict.replace( '%s', conflictList ) );
+      return;
+    }
+
     var config = editor.config,
       lang = editor.lang.a11ystylescombo,
       styles = {},

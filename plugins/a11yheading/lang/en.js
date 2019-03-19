@@ -16,6 +16,9 @@ CKEDITOR.plugins.setLang( 'a11yheading', 'en', {
   format_address: 'Address line',
   format_div:     'Normal (DIV)',
   helpLabel:      'Help',
-  helpNotFound:   'The A11yFirst Help system is not installed. Please contact \
-your CMS or CKEditor administrator for more information.'
+  helpNotFound:   'The A11yFirst Help system is not installed. Please \
+contact your CMS or CKEditor administrator for more information.',
+  pluginConflict: 'The \'a11yheading\' plugin could not be initialized \
+due to a conflict with one of the following plugins:\n\n    %s\n\nPlease \
+contact your CMS or CKEditor administrator for more information.'
 } );

@@ -25,6 +25,16 @@
     },
 
     init: function ( editor ) {
+      // Abort when another plugin with overlapping functionality is to be loaded
+      var pluginName = 'a11yheading',
+          conflictList = [ 'format' ],
+          lang = editor.lang.a11yheading;
+
+      if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
+        alert( lang.pluginConflict.replace( '%s', conflictList ) );
+        return;
+      }
+
       if ( editor.blockless )
         return;
 

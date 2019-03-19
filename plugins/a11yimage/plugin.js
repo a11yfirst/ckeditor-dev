@@ -82,6 +82,16 @@
     },
 
     init: function( editor ) {
+      // Abort when another plugin with overlapping functionality is to be loaded
+      var pluginName = 'a11yimage',
+          conflictList = [ 'easyimage', 'image', 'image2' ],
+          lang = editor.lang.a11yimage;
+
+      if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
+        alert( lang.pluginConflict.replace( '%s', conflictList ) );
+        return;
+      }
+
       // Adapts configuration from original image plugin. Should be removed
       // when we'll rename image2 to image.
       var config = editor.config,

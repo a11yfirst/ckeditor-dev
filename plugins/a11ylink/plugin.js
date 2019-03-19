@@ -63,6 +63,16 @@
     },
 
     init: function( editor ) {
+      // Abort when another plugin with overlapping functionality is to be loaded
+      var pluginName = 'a11ylink',
+          conflictList = [ 'link' ],
+          lang = editor.lang.a11ylink;
+
+      if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
+        alert( lang.pluginConflict.replace( '%s', conflictList ) );
+        return;
+      }
+
       var allowed = 'a[!href]',
         required = 'a[href]';
 
