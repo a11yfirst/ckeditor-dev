@@ -7,11 +7,12 @@
 ( function () {
 
   var allowedContent = [],
-    formatTags = [],
-    allHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    headings = [],
-    startIndex,
-    endIndex;
+      allHeadings = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ],
+      allFormats = [ 'p', 'pre', 'address', 'div' ],
+      headingTags = [],
+      formatTags = [],
+      startIndex,
+      endIndex;
 
   CKEDITOR.plugins.add( 'a11yheading', {
     requires: 'menubutton',
@@ -128,19 +129,19 @@
 
       var config = editor.config,
         lang = editor.lang.a11yheading,
-        oneLevel1 = typeof config.oneLevel1 === 'undefined' ? true : config.oneLevel1,
+        oneLevel1 = typeof config.allow_only_one_h1 === 'undefined' ? true : config.allow_only_one_h1,
         plugin = this,
         items = {},
         headingTag,
         formatTag;
 
-      // Initialize headings array and indices used by getAllowedHeadings
-      headings = this.getHeadingConfig( config );
-      startIndex = oneLevel1 && headings[0] === 'h1' ? 1 : 0;
-      endIndex = headings.length - 1;
+      // Initialize headingTags array and indices used by getAllowedHeadings
+      headingTags = this.getHeadingTags( config );
+      startIndex = oneLevel1 && headingTags[0] === 'h1' ? 1 : 0;
+      endIndex = headingTags.length - 1;
 
       // Initialize formatTags array
-      formatTags = config.format_tags.split( ';' );
+      formatTags = this.getFormatTags( config );
 
       // Register heading command
       editor.addCommand( 'heading', {
@@ -159,8 +160,8 @@
       } );
 
       // Create item entry for each heading element in config
-      for ( var i = 0; i < headings.length; i++ ) {
-        headingTag = headings[ i ];
+      for ( var i = 0; i < headingTags.length; i++ ) {
+        headingTag = headingTags[ i ];
         items[ headingTag ] = {
           label: lang['level_' + headingTag],
           headingId: headingTag,
@@ -185,7 +186,7 @@
           formatId: formatTag,
           group: 'block_formats',
           style: new CKEDITOR.style( { element: formatTag } ),
-          order: headings.length + i,
+          order: headingTags.length + i,
           onClick: function() {
             editor.execCommand( 'heading', this.formatId );
           },
@@ -200,7 +201,7 @@
       items.headingHelp = {
         label: lang.helpLabel,
         group: 'help_items',
-        order: headings.length + formatTags.length + 1,
+        order: headingTags.length + formatTags.length + 1,
         onClick: function() {
           var helpPlugin = CKEDITOR.plugins.get( 'a11yfirsthelp' );
           if (helpPlugin) {
@@ -249,8 +250,12 @@
       } );
     },
 
+    isHeadingElement: function ( name ) {
+      return ( allHeadings.indexOf( name ) >= 0 );
+    },
+
     isFormatElement: function ( name ) {
-      return ( formatTags.indexOf( name ) >= 0 );
+      return ( allFormats.indexOf( name ) >= 0 );
     },
 
     isHeadingOrFormatElement: function ( name ) {
@@ -274,62 +279,48 @@
       return element;
     },
 
-    getHeadingConfig: function ( config ) {
-      var headingConfigStrings = [],
-          configLength,
-          configStringStart,
-          configIndexStart,
-          configStringEnd,
-          configIndexEnd,
-          tempArray;
-
-      if ( typeof config.headings !== 'string' || config.headings.length === 0 ) {
+    getHeadingTags: function ( config ) {
+      if (typeof config.format_tags !== 'string' || config.format_tags.length === 0 ) {
         return allHeadings.slice();
       }
 
-      // Convert config.headings to array of lowercase tag names
-      tempArray = config.headings.split( ':' );
-      for ( var i = 0; i < tempArray.length; i++ ) {
-        if ( tempArray[ i ].length ) {
-          headingConfigStrings.push( tempArray[ i ].toLowerCase() );
-        }
-      }
-      headingConfigStrings.sort();
+      var headings = [];
 
-      // Allow flexible config settings
-      configLength = headingConfigStrings.length;
-      if ( configLength > 0 ) {
-
-        configStringStart = headingConfigStrings[ 0 ];
-        configIndexStart = allHeadings.indexOf( configStringStart );
-
-        if ( configIndexStart === -1 ) {
-          return allHeadings.slice();
-        }
-        else {
-          if ( configLength === 1 ) {
-            return allHeadings.slice( configIndexStart );
-          }
-          else {
-
-            configStringEnd = headingConfigStrings[ configLength - 1 ];
-            configIndexEnd = allHeadings.indexOf( configStringEnd );
-
-            if ( configIndexEnd === -1 ) {
-              return allHeadings.slice();
-            }
-            else {
-              return allHeadings.slice( configIndexStart, configIndexEnd + 1 );
-            }
-          }
-        }
+      var configTags = config.format_tags.split( ';' );
+      for ( let i = 0; i < configTags.length; i++ ) {
+        configTags[ i ] = configTags[ i ].toLowerCase();
       }
 
-      return allHeadings.slice();
+      // Use the allHeadings array to preserve the desired order and prevent duplicates
+      for ( let i = 0; i < allHeadings.length; i++ ) {
+        var tag = allHeadings[ i ];
+        if ( configTags.indexOf( tag ) >= 0 ) {
+          headings.push( tag );
+        }
+      }
+      return headings;
     },
 
-    isHeadingElement: function ( name ) {
-      return ( allHeadings.indexOf( name ) >= 0 );
+    getFormatTags: function ( config ) {
+      if (typeof config.format_tags !== 'string' || config.format_tags.length === 0 ) {
+        return allFormats.slice();
+      }
+
+      var formats = [];
+
+      var configTags = config.format_tags.split( ';' );
+      for ( let i = 0; i < configTags.length; i++ ) {
+        configTags[ i ] = configTags[ i ].toLowerCase();
+      }
+
+      // Use the allFormats array to preserve the desired order and prevent duplicates
+      for ( let i = 0; i < allFormats.length; i++ ) {
+        var tag = allFormats[ i ];
+        if ( configTags.indexOf( tag ) >= 0 ) {
+          formats.push( tag );
+        }
+      }
+      return formats;
     },
 
     getCurrentHeadingElement: function ( editor ) {
@@ -387,27 +378,27 @@
       // console.log( 'LAST HEADING: ' + lastHeading );
 
       if ( lastHeading === null )
-        return headings.slice( 0, 1 );
+        return headingTags.slice( 0, 1 );
 
-      var index = headings.indexOf( lastHeading );
+      var index = headingTags.indexOf( lastHeading );
       if ( index >= 0 ) {
-        var retVal = headings.slice( startIndex, index + 1 );
+        var retVal = headingTags.slice( startIndex, index + 1 );
         if ( index < endIndex ) {
-          retVal.push( headings[ index + 1 ] );
+          retVal.push( headingTags[ index + 1 ] );
         }
         return retVal;
       }
 
-      // lastHeading not in headings array => lexical comparison
-      if ( lastHeading < headings[ 0 ] )
-        return headings.slice( startIndex, startIndex + 1 );
+      // lastHeading not in headingTags array => lexical comparison
+      if ( lastHeading < headingTags[ 0 ] )
+        return headingTags.slice( startIndex, startIndex + 1 );
 
-      if ( lastHeading > headings[ endIndex ] )
-        return headings.slice( startIndex );
+      if ( lastHeading > headingTags[ endIndex ] )
+        return headingTags.slice( startIndex );
 
     } // end method getAllowedHeadings
 
   } )
 } )();
 
-CKEDITOR.config.format_tags = 'p;pre;address';
+CKEDITOR.config.format_tags = 'h1;h2;h3;h4;h5;h6;p;pre;address;div';
