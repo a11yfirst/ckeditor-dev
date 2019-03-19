@@ -62,6 +62,8 @@
 */
 
 CKEDITOR.editorConfig = function ( config ) {
+  config.format_tags = 'h1;h2;h3;h4;p;pre;address';
+  config.allow_only_one_h1 = true;
   config.height = 480;
   config.skin = 'moono-lisa';
   config.startupFocus = true;
