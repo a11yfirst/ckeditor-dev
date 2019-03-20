@@ -280,28 +280,44 @@
     },
 
     getHeadingTags: function ( config ) {
+      // This condition should not occur as long as this file contains a definition
       if (typeof config.format_tags !== 'string' || config.format_tags.length === 0 ) {
         return allHeadings.slice();
       }
 
-      var headings = [];
+      var headings = [], beginIndex, endIndex;
 
       var configTags = config.format_tags.split( ';' );
-      for ( let i = 0; i < configTags.length; i++ ) {
+      for ( var i = 0; i < configTags.length; i++ ) {
         configTags[ i ] = configTags[ i ].toLowerCase();
       }
 
       // Use the allHeadings array to preserve the desired order and prevent duplicates
-      for ( let i = 0; i < allHeadings.length; i++ ) {
+      for ( var i = 0; i < allHeadings.length; i++ ) {
         var tag = allHeadings[ i ];
         if ( configTags.indexOf( tag ) >= 0 ) {
           headings.push( tag );
         }
       }
-      return headings;
+
+      // Handle three cases: empty array; only one item; multiple items
+      switch ( headings.length ) {
+        case 0:
+          // If no heading tags in config, default to all tags
+          return allHeadings.slice();
+        case 1:
+          // Allow config to specify only one heading tag
+          return headings;
+        default:
+          // Do not allow gaps within the range of headings
+          beginIndex = allHeadings.indexOf( headings[ 0 ] );
+          endIndex   = allHeadings.indexOf( headings[ headings.length - 1 ] ) + 1;
+          return allHeadings.slice( beginIndex, endIndex );
+      }
     },
 
     getFormatTags: function ( config ) {
+      // This condition should not occur as long as this file contains a definition
       if (typeof config.format_tags !== 'string' || config.format_tags.length === 0 ) {
         return allFormats.slice();
       }
@@ -309,17 +325,21 @@
       var formats = [];
 
       var configTags = config.format_tags.split( ';' );
-      for ( let i = 0; i < configTags.length; i++ ) {
+      for ( var i = 0; i < configTags.length; i++ ) {
         configTags[ i ] = configTags[ i ].toLowerCase();
       }
 
       // Use the allFormats array to preserve the desired order and prevent duplicates
-      for ( let i = 0; i < allFormats.length; i++ ) {
+      for ( var i = 0; i < allFormats.length; i++ ) {
         var tag = allFormats[ i ];
         if ( configTags.indexOf( tag ) >= 0 ) {
           formats.push( tag );
         }
       }
+
+      // If no paragraph format tags were specified in config, default to basic set
+      if ( formats.length == 0 ) return allFormats.slice( 0, 3 );
+
       return formats;
     },
 
