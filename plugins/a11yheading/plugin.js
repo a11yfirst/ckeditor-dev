@@ -8,9 +8,9 @@
 
   var allowedContent = [],
       allHeadings = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ],
-      allFormats = [ 'p', 'pre', 'address', 'div' ],
+      allFormats  = [ 'p', 'pre', 'address', 'div' ],
       headingTags = [],
-      formatTags = [],
+      formatTags  = [],
       startIndex,
       endIndex;
 
@@ -110,22 +110,6 @@
         CKEDITOR.scriptLoader.load( this.path + 'js/override.js' );
         console.log( 'Loaded override.js' );
       }
-
-      // temporary test
-      function testCompareVersions () {
-        var  ckeVersion = CKEDITOR.version,
-             minVersion = '4.11';
-        var value = compareVersions( ckeVersion, minVersion );
-        if (value === -1)
-          console.log( ckeVersion + ' is less than ' + minVersion );
-        else if (value === 0)
-          console.log( 'The versions are the same!' );
-        else if (value === 1)
-          console.log( ckeVersion + ' is greater than ' + minVersion );
-        else if (isNaN(value))
-          console.log( ckeVersion + ' contains a part that is is not a number!' );
-      }
-      // testCompareVersions();
 
       var config = editor.config,
         lang = editor.lang.a11yheading,
