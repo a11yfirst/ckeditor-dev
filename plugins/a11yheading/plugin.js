@@ -31,9 +31,12 @@
           conflictList = [ 'format' ],
           lang = editor.lang.a11yheading;
 
-      if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
-        alert( lang.pluginConflict.replace( '%s', conflictList ) );
-        return;
+      // The detectConflict method was introduced in CKEditor v4.10.1
+      if ( typeof editor.plugins.detectConflict !== undefined ) {
+        if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
+          alert( lang.pluginConflict.replace( '%s', conflictList ) );
+          return;
+        }
       }
 
       if ( editor.blockless )

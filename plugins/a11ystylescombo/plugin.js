@@ -14,10 +14,13 @@ CKEDITOR.plugins.add( 'a11ystylescombo', {
         conflictList = [ 'stylescombo' ],
         lang = editor.lang.a11ystylescombo;
 
-    if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
-      alert( lang.pluginConflict.replace( '%s', conflictList ) );
-      return;
-    }
+      // The detectConflict method was introduced in CKEditor v4.10.1
+      if ( typeof editor.plugins.detectConflict !== undefined ) {
+        if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
+          alert( lang.pluginConflict.replace( '%s', conflictList ) );
+          return;
+        }
+      }
 
     var config = editor.config,
       lang = editor.lang.a11ystylescombo,
