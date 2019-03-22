@@ -88,7 +88,7 @@
           lang = editor.lang.a11yimage;
 
       // The detectConflict method was introduced in CKEditor v4.10.1
-      if ( typeof editor.plugins.detectConflict !== undefined ) {
+      if ( typeof editor.plugins.detectConflict === 'function' ) {
         if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
           alert( lang.pluginConflict.replace( '%s', conflictList ) );
           return;
