@@ -88,14 +88,11 @@ CKEDITOR.editorConfig = function ( config ) {
     'fakeobjects,' +
     'find,' +
     'floatpanel,' +
-    // 'format,' +
     'htmlwriter,' +
-    // 'image2,' +
     'indent,' +
     'indentlist,' +
     'justify,' +
     'language,' +
-    // 'link,' +
     'list,' +
     'listblock,' +
     'liststyle,' +
@@ -113,7 +110,6 @@ CKEDITOR.editorConfig = function ( config ) {
     'showborders,' +
     'sourcearea,' +
     'specialchar,' +
-    // 'stylescombo,' +
     'tab,' +
     'table,' +
     'tableselection,' +
@@ -163,7 +159,7 @@ CKEDITOR.editorConfig = function ( config ) {
   ];
 
   config.toolbar = [
-    { name: 'heading',        items: [ 'Heading', 'Format' ] },
+    { name: 'heading',        items: [ 'Heading' ] },
     { name: 'list',           items: [ 'NumberedList', 'BulletedList', 'Indent', 'Outdent' ] },
     { name: 'otherblocks',    items: [ 'Blockquote', 'CodeSnippet' ] },
     { name: 'justify',        items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
@@ -176,7 +172,7 @@ CKEDITOR.editorConfig = function ( config ) {
     { name: 'clipboard',      items: [ 'Cut', 'Copy', 'Paste', 'PasteFromWord' ] },
     { name: 'search',         items: [ 'Find', 'Replace' ] },
     { name: 'basicstyles',    items: [ 'Bold', 'Italic' ] },
-    { name: 'inlinestyle',    items: [ 'InlineStyle', 'Styles' ] },
+    { name: 'inlinestyle',    items: [ 'InlineStyle' ] },
     { name: 'removeformat',   items: [ 'RemoveFormat' ] },
     { name: 'link',           items: [ 'Link', 'Unlink', 'Anchor' ] },
     { name: 'misc2',          items: [ 'Language', 'SpecialChar' ] },
