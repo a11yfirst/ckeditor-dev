@@ -88,7 +88,7 @@ CKEDITOR.editorConfig = function ( config ) {
     'fakeobjects,' +
     'find,' +
     'floatpanel,' +
-    //'format,' +
+    // 'format,' +
     'htmlwriter,' +
     // 'image2,' +
     'indent,' +
