@@ -39,6 +39,9 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
     table td:nth-child(2), table td:nth-child(3) {
       text-align: right;
     }
+    table td.footnote {
+      font-size: 80%;
+    }
   </style>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -164,6 +167,8 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
                 <h2>Description</h2>
 
+                <p>[Please insert Fruit Bowls image here — width: 600 pixels; alignment: right]</p>
+
                 <p>There are a number of home recipes for fruit salad that contain different kinds of fruit, or that use a different kind of sauce other than the fruit's own juice or syrup. Common ingredients used in fruit salads include strawberries, pineapple, honeydew, watermelon, grapes, and kiwifruit. Various recipes may call for the addition of nuts, fruit juices, certain vegetables, yogurt, or other ingredients.</p>
 
                 <p>One variation is a Waldorf-style fruit salad, which uses a mayonnaise-based sauce. Other recipes use sour cream (such as in ambrosia), yogurt or even mustard as the primary sauce ingredient. A variation on fruit salad uses whipped cream mixed in with many varieties of fruits (usually a mixture of berries), and also often include miniature marshmallows. Rojak, a Malaysian fruit salad, uses a spicy sauce with peanuts and shrimp paste. In the Philippines, fruit salads are popular party and holiday fare, usually made with buko, or young coconut, and condensed milk in addition to other canned or fresh fruit.</p>
@@ -178,10 +183,10 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
                 <p>A nutritional analysis of a typical fruit salad without added sugar is shown below. The breakdown for a 250 gram serving (approximately one half pound) is 300 calories from 2 grams of fat, 70 grams (net) of carbohydrate and 3 grams of protein.</p>
 
-                <p>[[Hey Bob, fill this in when we get the nutritional analysis back--Jane]]</p>
+                <p>[Please insert Nutrition Facts image here — width: 400 pixels; alignment: none]</p>
 
                 <table width="50%" style="border: 1px solid grey; border-collapse: collapse;">
-                  <caption>Nutrition Facts</caption>
+                  <caption>Nutrition Facts Table</caption>
                   <tbody>
                     <tr>
                       <th scope="row">Serving size</th>
@@ -271,9 +276,13 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
                       <td>705 mg</td>
                       <td>15%</td>
                     </tr>
+                    <tr>
+                      <td class="footnote" colspan="3">*The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</td>
+                    </tr>
                   </tbody>
                 </table>
 
+                <p>[Please insert horizontal rule image here — width: 800 pixels; alignment: none]</p>
                 <h2>Health benefits of a high fiber diet</h2>
 
                 <p>Dietary fibers are found in fruits, vegetables and whole grains. Dietary fiber is found in plants, typically eaten whole, raw or cooked, although fiber can be added to make dietary supplements and fiber-rich processed foods. Grain bran products have the highest fiber contents, such as crude corn bran (79 g per 100 g) and crude wheat bran (43 g per 100 g), which are ingredients for manufactured foods. Medical authorities, such as the Mayo Clinic, recommend adding fiber-rich products to the Standard American Diet (SAD) which is rich in processed and artificially sweetened foods, with minimal intake of vegetables and legumes.</p>
@@ -295,33 +304,33 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
         <div class="row image_resources" hidden>
           <div class="col">
             <h2>Image Resources</h2>
-            <p><em>Select button below the image to copy image URL to clipboard.</em></p>
+            <p><em>Select button above the image to copy image URL to clipboard.</em></p>
           </div>
         </div>
 
         <div class="row image_resources" hidden>
           <div class="col-3">
               <figure>
+                  <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 1 URL to clipboard"/></div>
                   <img src="images/fruit.jpg">
                   <figcaption>Image 1</figcaption>
               </figure>
-              <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 1 URL to clipboard"/></div>
           </div>
 
           <div class="col-3">
             <figure>
+              <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 2 URL to clipboard"/></div>
               <img src="images/nutrition-facts.png">
               <figcaption>Image 2</figcaption>
             </figure>
-              <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 2 URL to clipboard"/></div>
           </div>
 
           <div class="col-3">
             <figure>
+              <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 3 URL to clipboard"/></div>
               <img src="images/strawberry.png">
               <figcaption>Image 3</figcaption>
             </figure>
-            <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 3 URL to clipboard"/></div>
           </div>
     </main>
   </div>
@@ -355,12 +364,14 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
                 <h2>Average calorie consumption data</h2>
 
-                <p>The chart below, from the World Resources Institute, shows that from 1961 to 2010, the average number of calories consumed per capita per day for a variety of countries increased significantly. The United States and the European Union were at the top of the range, starting at around 3,000 calories per day in 1961, and ending at 3,700 and 3,400, respectively.</p>
+                <p>The graph below, entitled 'People Are Consuming More Calories' from the World Resources Institute, shows that from 1961 to 2010, the average number of calories consumed per capita per day for a variety of countries increased significantly.</p>
 
-                <p>Brazil showed an increase from around 2,200 calories to 3,300, and China an increase from fewer than 1,500 calories to over 3,000, for that same span of years. The world average, as illustrated by the chart, started at around 2,200 calories in 1961 and ended at 2,800 in 2010.</p>
-
-                <p>The ranges in calories consumed per capita per day from 1961 to 2010 for the other countries shown are:</p>
+                <p>The ranges in calories consumed per capita per day from 1961 to 2010 for the countries shown are:</p>
                 <ul>
+                  <li>United States: from 2,900 to 3,700</li>
+                  <li>European Union: from 3,000 to 3,400</li>
+                  <li>Brazil: from 2,200 to 3,300</li>
+                  <li>China: from fewer than 1,500 to 3,300</li>
                   <li>Nigeria: from 2,000 to 2,750</li>
                   <li>Indonesia: from 1,800 to 2,750</li>
                   <li>Japan: from 2,500, peaking at 3,000 in the late 1980's until around 1995, and then dropping off to 2,750</li>
@@ -368,7 +379,11 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
                   <li>Ethiopia: from 1,800 with considerable fluctuation through the early 1990's, and then increasing to 2,100</li>
                 </ul>
 
-                <p>The chart also projects increases of calorie consumption for all of the countries shown, from 2010 to 2050, with the world average starting at 2,800 and ending at 3,100.</p>
+                <p>The world average, as illustrated by the graph, started at around 2,200 calories in 1961 and ended at 2,800 in 2010.</p>
+
+                <p>The graph also projects increases in calorie consumption for all of the countries shown, from 2010 to 2050, with the world average starting at 2,800 and ending at 3,100.</p>
+
+                <p>[Please insert World Resources Institute graphic here — width: 800 pixels; alignment: none]</p>
                 <!-- END human-nutrition.html -->
               </div>
 
@@ -383,17 +398,17 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
         <div class="row image_resources" hidden>
           <div class="col">
             <h2>Image Resources</h2>
-            <p><em>Select button below the image to copy image URL to clipboard.</em></p>
+            <p><em>Select button above the image to copy image URL to clipboard.</em></p>
           </div>
         </div>
 
         <div class="row image_resources" hidden>
           <div class="col-3">
             <figure>
+              <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 1 URL to clipboard"/></div>
               <img src="images/nutrition-graph.png">
               <figcaption>Image 1</figcaption>
             </figure>
-            <div class="center"><input type="image" src="images/copy-to-clipboard.png" title="Copy Image 1 URL to clipboard"/></div>
           </div>
         </div>
     </main>
