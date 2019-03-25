@@ -145,23 +145,79 @@ The context menu can be invoked by positioning the cursor in a list item and:\n\
     'content' : '\
 ## Image\n\
 \n\
-### Describing images for people with visual impairments\n\
+### Accessible image descriptions\n\
 \n\
 * People with visual impairments or visual processing disorders need\n\
   accessible text descriptions of informative images.\n\
+\n\
+* There are two types of accessible descriptions for images: **alternative\n\
+  text** and **long descriptions**.\n\
 \n\
 * Effective text descriptions of images can determine the extent to which\n\
   readers comprehend your document.\n\
 \n\
 ### Alternative text\n\
 \n\
-* Alternative text is required for all informative images and should\n\
-  succinctly describe the main content and function of the image.\n\
+* Alternative text succinctly describes the content and function of the\n\
+  image for people with visual impairments.\n\
 \n\
 * The length of the alternative text should be no more than 100 characters.\n\
 \n\
+* Alternative text is required for all informative images, but is not\n\
+  required for images that are purely decorative.\n\
+\n\
 * Alternative text is not visible in the document; it is spoken by screen\n\
   reader applications, via the *alt* attribute of the *img* element.\n\
+\n\
+* To indicate that an image is purely decorative, select the **‘Image does\n\
+  not require alternative text’** checkbox and leave the alternative text\n\
+  field blank.\n\
+\n\
+### Long descriptions for complex images\n\
+\n\
+* A complex image has informational content that cannot be described adequately\n\
+  by alternative text of 100 characters or less.\n\
+\n\
+* Examples of complex images include charts, graphs, diagrams, scientific\n\
+  photographs and works of art.\n\
+\n\
+* A complex image needs both a concise alternative text description and a\n\
+  longer, more detailed description.\n\
+\n\
+* Accessibility requirements mandate that the long description of a complex\n\
+  image be placed in the document adjacent to the image.\n\
+\n\
+### Adding a long description in the document\n\
+\n\
+Follow these steps when adding a long description of a complex image:\n\
+\n\
+1. Add an adequately detailed description of the image within the document,\n\
+   either just before or after the image (or both).\n\
+\n\
+1. In answer to the question **‘Is a long description needed, and if so,\n\
+   where will it be located’**, select one of the following:\n\
+       * Yes; in the document before the image\n\
+       * Yes; in the document after the image\n\
+       * Yes; in the document before and after the image\n\
+\n\
+By specifying the location of the long description relative to the image,\n\
+screen reader users will be informed of its existence and location in the\n\
+document. (This information is appended to the alternative text.)\n\
+\n\
+### Insert a caption text box below the image\n\
+\n\
+* A **caption** is an optional visual label supported by CKEditor for an image.\n\
+  It provides an additional way to describe an image that is immediately below\n\
+  and proximate to the image.\n\
+\n\
+* The caption content is specified and is editable in the text box just below\n\
+  the image, once it has been inserted in the document.\n\
+\n\
+* From an accessibility perspective the *caption* and the *alternative text*\n\
+  should not be the same, but instead should complement each other.\n\
+\n\
+* Using the caption creates a *figcaption* element contained in a *figure*\n\
+  element. The *figure* element also contains the *img* element.\n\
 \n\
 ### Writing effective alternative text\n\
 \n\
@@ -189,61 +245,6 @@ guidelines for alternative text:\n\
   include this in the alternative text.\n\
 \n\
 * **Do NOT include file names or sizes** as part of the alternative text.\n\
-\n\
-### Requirement exception for alternative text\n\
-\n\
-* When an image adds no additional information to the document, select the\n\
-  **‘Image does not require alternative text’** checkbox and leave the\n\
-  alternative text field blank.\n\
-\n\
-* In all other cases, alternative text is required.\n\
-\n\
-### Detailed descriptions for complex images\n\
-\n\
-* A complex image has informational content that cannot be described adequately\n\
-  by alternative text of 100 characters or less.\n\
-\n\
-* Examples of complex images include charts, graphs, diagrams, scientific\n\
-  photographs and works of art.\n\
-\n\
-* A complex image needs both a concise alternative text description and a\n\
-  longer, more detailed description.\n\
-\n\
-* Accessibility requirements mandate that the long description of a complex\n\
-  image be placed within the document adjacent to the image.\n\
-\n\
-### Adding a longer, detailed description in the document\n\
-\n\
-Follow these steps when adding an adjacent detailed description of a complex\n\
-image:\n\
-\n\
-1. Add an adequately detailed description of the image within the document,\n\
-   either just before or after the image (or both).\n\
-\n\
-1. In answer to the question **‘Is there an adjacent detailed description of the\n\
-   image in the document’**, select one of the following:\n\
-       * Yes, before the image\n\
-       * Yes, after the image\n\
-       * Yes, before and after the image\n\
-\n\
-By specifying the location of the detailed description relative to the image,\n\
-screen reader users can be informed of the existence and location of the\n\
-description in the document.\n\
-\n\
-### Insert a caption text box below the image\n\
-\n\
-* A **caption** is an optional visual label supported by CKEditor for an image.\n\
-  It provides an additional way to describe an image that is immediately below\n\
-  and proximate to the image.\n\
-\n\
-* The caption content is specified and is editable in the text box just below\n\
-  the image, once it has been inserted in the document.\n\
-\n\
-* From an accessibility perspective the *caption* and the *alternative text*\n\
-  should not be the same, but instead should complement each other.\n\
-\n\
-* Using the caption creates a *figcaption* element contained in a *figure*\n\
-  element. The *figure* element also contains the *img* element.\n\
 \n\
 ### Why image descriptions are important\n\
 \n\
