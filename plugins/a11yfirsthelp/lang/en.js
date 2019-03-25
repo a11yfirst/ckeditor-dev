@@ -158,10 +158,8 @@ The context menu can be invoked by positioning the cursor in a list item and:\n\
 \n\
 ### Alternative text\n\
 \n\
-* Alternative text succinctly describes the content and function of the\n\
-  image for people with visual impairments.\n\
-\n\
-* The length of the alternative text should be no more than 100 characters.\n\
+* The alternative text should succinctly describe the content and function\n\
+  of the image in no more than 100 characters.\n\
 \n\
 * Alternative text is required for all informative images, but is not\n\
   required for images that are purely decorative.\n\

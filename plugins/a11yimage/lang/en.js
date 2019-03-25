@@ -16,21 +16,21 @@ no longer than 100 characters',
   altTextNotRequiredLabel: 'Image does not require alternative text',
 
   // Long description
-  // longDescLabel: 'Is there an adjacent detailed description of the image in the document?',
   longDescLabel: 'Is a long description needed, and if so, where will it be located?',
   longDescTitle: 'Many people benefit from a detailed description of a \
 complex image, including, but not limited to, people with visual impairments',
 
+  // Long desc. select options
   longDescOptionNo: 'No, the alternative text is adequate',
   longDescOptionYesBefore: 'Yes; in the document before the image',
   longDescOptionYesAfter: 'Yes; in the document after the image',
   longDescOptionYesBoth: 'Yes; in the document before and after the image',
 
+  // Long desc. information appended to alternative text
   longDescBefore: 'Long description is located just before the image',
   longDescAfter: 'Long description is located just after the image',
   longDescBoth: 'Long description is located before and after the image',
 
-  // imageDescHelpLabel: 'Help: Describing images for people with visual impairments',
   imageDescHelpLabel: 'Help: Accessible image descriptions',
 
   // Caption
