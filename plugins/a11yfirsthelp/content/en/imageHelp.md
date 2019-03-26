@@ -5,26 +5,23 @@
 * People with visual impairments or visual processing disorders need
   accessible text descriptions of informative images.
 
-* There are two types of accessible descriptions for images: **alternative
-  text** and **long descriptions**.
-
-* Effective text descriptions of images can determine the extent to which
-  readers comprehend your document.
+* There are two types of accessible descriptions for images: *alternative
+  text* and *long descriptions*.
 
 ### Alternative text
 
-* The alternative text should succinctly describe the content and function
-  of the image in no more than 100 characters.
+* Succinctly describes the content and function of the image for people
+  with visual impairments, in no more than 100 characters
 
-* Alternative text is required for all informative images, but is not
-  required for images that are purely decorative.
+* Is required for informative images, but is not required for images that are
+  purely decorative
 
-* Alternative text is not visible in the document; it is spoken by screen
-  reader applications, via the *alt* attribute of the *img* element.
+* Is not visible in the document; it is added to the HTML markup as the value
+  of the *alt* attribute on the *img* element, and thereby conveyed to screen
+  reader users when they encounter the image
 
-* To indicate that an image is purely decorative, select the **‘Image does
-  not require alternative text’** checkbox and leave the alternative text
-  field blank.
+* For an image that is purely decorative, select the **‘Image does not require
+  alternative text’** checkbox and leave the alternative text field blank.
 
 ### Long descriptions for complex images
 

@@ -150,26 +150,23 @@ The context menu can be invoked by positioning the cursor in a list item and:\n\
 * People with visual impairments or visual processing disorders need\n\
   accessible text descriptions of informative images.\n\
 \n\
-* There are two types of accessible descriptions for images: **alternative\n\
-  text** and **long descriptions**.\n\
-\n\
-* Effective text descriptions of images can determine the extent to which\n\
-  readers comprehend your document.\n\
+* There are two types of accessible descriptions for images: *alternative\n\
+  text* and *long descriptions*.\n\
 \n\
 ### Alternative text\n\
 \n\
-* The alternative text should succinctly describe the content and function\n\
-  of the image in no more than 100 characters.\n\
+* Succinctly describes the content and function of the image for people\n\
+  with visual impairments, in no more than 100 characters\n\
 \n\
-* Alternative text is required for all informative images, but is not\n\
-  required for images that are purely decorative.\n\
+* Is required for informative images, but is not required for images that are\n\
+  purely decorative\n\
 \n\
-* Alternative text is not visible in the document; it is spoken by screen\n\
-  reader applications, via the *alt* attribute of the *img* element.\n\
+* Is not visible in the document; it is added to the HTML markup as the value\n\
+  of the *alt* attribute on the *img* element, and thereby conveyed to screen\n\
+  reader users when they encounter the image\n\
 \n\
-* To indicate that an image is purely decorative, select the **‘Image does\n\
-  not require alternative text’** checkbox and leave the alternative text\n\
-  field blank.\n\
+* For an image that is purely decorative, select the **‘Image does not require\n\
+  alternative text’** checkbox and leave the alternative text field blank.\n\
 \n\
 ### Long descriptions for complex images\n\
 \n\
