@@ -158,14 +158,13 @@ The context menu can be invoked by positioning the cursor in a list item and:\n\
 * Succinctly describes the content and function of the image for people\n\
   with visual impairments, in no more than 100 characters\n\
 \n\
-* Is required for informative images, but is not required for images that are\n\
-  purely decorative\n\
+* Is required for informative images (but not for images that are purely\n\
+  decorative)\n\
 \n\
-* Is not visible in the document; it is added to the HTML markup as the value\n\
-  of the *alt* attribute on the *img* element, and thereby conveyed to screen\n\
-  reader users when they encounter the image\n\
+* Is not visible in the document; it is communicated to screen reader users\n\
+  via the *img* element\'s *alt* attribute\n\
 \n\
-* For an image that is purely decorative, select the **‘Image does not require\n\
+* For a purely decorative image, select the **‘Image does not require\n\
   alternative text’** checkbox and leave the alternative text field blank.\n\
 \n\
 ### Long descriptions for complex images\n\

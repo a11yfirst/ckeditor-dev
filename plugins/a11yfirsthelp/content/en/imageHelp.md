@@ -13,14 +13,13 @@
 * Succinctly describes the content and function of the image for people
   with visual impairments, in no more than 100 characters
 
-* Is required for informative images, but is not required for images that are
-  purely decorative
+* Is required for informative images (but not for images that are purely
+  decorative)
 
-* Is not visible in the document; it is added to the HTML markup as the value
-  of the *alt* attribute on the *img* element, and thereby conveyed to screen
-  reader users when they encounter the image
+* Is not visible in the document; it is communicated to screen reader users
+  via the *img* element's *alt* attribute
 
-* For an image that is purely decorative, select the **‘Image does not require
+* For a purely decorative image, select the **‘Image does not require
   alternative text’** checkbox and leave the alternative text field blank.
 
 ### Long descriptions for complex images
