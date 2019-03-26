@@ -1,22 +1,72 @@
 ## Image
 
-### Describing images for people with visual impairments
+### Accessible image descriptions
 
 * People with visual impairments or visual processing disorders need
   accessible text descriptions of informative images.
 
-* Effective text descriptions of images can determine the extent to which
-  readers comprehend your document.
+* There are two types of accessible descriptions for images: *alternative
+  text* and *long descriptions*.
 
 ### Alternative text
 
-* Alternative text is required for all informative images and should
-  succinctly describe the main content and function of the image.
+* Succinctly describes the content and function of the image for people
+  with visual impairments, in no more than 100 characters
 
-* The length of the alternative text should be no more than 100 characters.
+* Is required for informative images (but not for images that are purely
+  decorative)
 
-* Alternative text is not visible in the document; it is spoken by screen
-  reader applications, via the *alt* attribute of the *img* element.
+* Is not visible in the document; it is communicated to screen reader users
+  via the *img* element's *alt* attribute
+
+* For a purely decorative image, select the **‘Image does not require
+  alternative text’** checkbox and leave the alternative text field blank.
+
+### Long descriptions for complex images
+
+* A complex image has informational content that cannot be described adequately
+  by alternative text of 100 characters or less.
+
+* Examples of complex images include charts, graphs, diagrams, scientific
+  photographs and works of art.
+
+* A complex image needs both a concise alternative text description and a
+  longer, more detailed description.
+
+* Accessibility requirements mandate that the long description of a complex
+  image be placed in the document adjacent to the image.
+
+### Adding a long description in the document
+
+Follow these steps when adding a long description of a complex image:
+
+1. Add an adequately detailed description of the image within the document,
+   either just before or after the image (or both).
+
+1. In answer to the question **‘Is a long description needed, and if so,
+   where will it be located’**, select one of the following:
+       * Yes; in the document before the image
+       * Yes; in the document after the image
+       * Yes; in the document before and after the image
+
+By specifying the location of the long description relative to the image,
+screen reader users will be informed of its existence and location in the
+document. (This information is appended to the alternative text.)
+
+### Insert a caption text box below the image
+
+* A **caption** is an optional visual label supported by CKEditor for an image.
+  It provides an additional way to describe an image that is immediately below
+  and proximate to the image.
+
+* The caption content is specified and is editable in the text box just below
+  the image, once it has been inserted in the document.
+
+* From an accessibility perspective the *caption* and the *alternative text*
+  should not be the same, but instead should complement each other.
+
+* Using the caption creates a *figcaption* element contained in a *figure*
+  element. The *figure* element also contains the *img* element.
 
 ### Writing effective alternative text
 
@@ -44,61 +94,6 @@ guidelines for alternative text:
   include this in the alternative text.
 
 * **Do NOT include file names or sizes** as part of the alternative text.
-
-### Requirement exception for alternative text
-
-* When an image adds no additional information to the document, select the
-  **‘Image does not require alternative text’** checkbox and leave the
-  alternative text field blank.
-
-* In all other cases, alternative text is required.
-
-### Detailed descriptions for complex images
-
-* A complex image has informational content that cannot be described adequately
-  by alternative text of 100 characters or less.
-
-* Examples of complex images include charts, graphs, diagrams, scientific
-  photographs and works of art.
-
-* A complex image needs both a concise alternative text description and a
-  longer, more detailed description.
-
-* Accessibility requirements mandate that the long description of a complex
-  image be placed within the document adjacent to the image.
-
-### Adding a longer, detailed description in the document
-
-Follow these steps when adding an adjacent detailed description of a complex
-image:
-
-1. Add an adequately detailed description of the image within the document,
-   either just before or after the image (or both).
-
-1. In answer to the question **‘Is there an adjacent detailed description of the
-   image in the document’**, select one of the following:
-       * Yes, before the image
-       * Yes, after the image
-       * Yes, before and after the image
-
-By specifying the location of the detailed description relative to the image,
-screen reader users can be informed of the existence and location of the
-description in the document.
-
-### Insert a caption text box below the image
-
-* A **caption** is an optional visual label supported by CKEditor for an image.
-  It provides an additional way to describe an image that is immediately below
-  and proximate to the image.
-
-* The caption content is specified and is editable in the text box just below
-  the image, once it has been inserted in the document.
-
-* From an accessibility perspective the *caption* and the *alternative text*
-  should not be the same, but instead should complement each other.
-
-* Using the caption creates a *figcaption* element contained in a *figure*
-  element. The *figure* element also contains the *img* element.
 
 ### Why image descriptions are important
 
