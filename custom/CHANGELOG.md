@@ -6,29 +6,33 @@ All notable changes to the A11yFirst project will be documented in this file.
 
 ### Updates
 
-* Update Image dialog labels and long description options
+* Image dialog labels and long description options
   * Changed long description location select label (question) from 'Is there
     an adjacent detailed description of the image in the document?' to 'Is a
     long description needed, and if so, where will it be located?'
   * Changed Help button label from 'Help: Describing images for people with
     visual impairments' to 'Help: Accessible image descriptions'
+  * Added CSS styling to differentiate the Help button from text input boxes
+    and with background color change on hover
 
-* Update Image help content to sync with Image dialog changes
+* Image help content to sync with Image dialog changes
   * Changed the first subsection heading from 'Describing images for people
-    with visual impairments' to 'Accessible image descriptions' and modified
-    content
-  * Modified content in the 'Alternative text' section to include the
-    information previously under 'Requirement exception for alternative text'
-    and better explain how it is communicated to screen reader users
-  * Moved the 'Writing effective alternative text' after the 'Caption' section
-  * Changed the long description section heading from 'Detailed descriptions'
+    with visual impairments' to 'Accessible image descriptions' (in sync with
+    Help button label) and modified the section content to emphasize the
+    concepts of 'Alternative text' and 'Long descriptions'
+  * Modified content in the 'Alternative text' section to better explain how
+    it is communicated to screen reader users and to include the information
+    previously under 'Requirement exception for alternative text'
+  * Moved the 'Writing effective alternative text' section to just after the
+   'Caption' section
+  * Changed the long description section heading from 'Detailed descriptions
     for complex images' to 'Long descriptions for complex images'
-  * Changed the heading 'Adding a longer, detailed description in the document'
-    to 'Adding a long description in the document' and synced the content of
-    that section to labeling changes in the Image Properties dialog
+  * Changed the heading of the how-to section from 'Adding a longer, detailed
+    description in the document' to 'Adding a long description in the document'
+    and revised the section content to sync with the Image dialog updates
 
-* Update Usability Test Pages
-  * Add placeholders for image insertion with properties settings
+* Usability test pages
+  * Added placeholders for all image insertions with properties settings
   * Moved the 'Copy URL to Clipboard' buttons from below to above the images
   * Revised the long description of calories consumption graph to more closely
     align with the information in the graph
