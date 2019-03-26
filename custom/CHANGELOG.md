@@ -2,6 +2,39 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.1.3 — 26 Mar 2019
+
+### Updates
+
+* Update Image dialog labels and long description options
+  * Changed long description location select label (question) from 'Is there
+    an adjacent detailed description of the image in the document?' to 'Is a
+    long description needed, and if so, where will it be located?'
+  * Changed Help button label from 'Help: Describing images for people with
+    visual impairments' to 'Help: Accessible image descriptions'
+
+* Update Image help content to sync with Image dialog changes
+  * Changed the first subsection heading from 'Describing images for people
+    with visual impairments' to 'Accessible image descriptions' and modified
+    content
+  * Modified content in the 'Alternative text' section to include the
+    information previously under 'Requirement exception for alternative text'
+    and better explain how it is communicated to screen reader users
+  * Moved the 'Writing effective alternative text' after the 'Caption' section
+  * Changed the long description section heading from 'Detailed descriptions'
+    for complex images' to 'Long descriptions for complex images'
+  * Changed the heading 'Adding a longer, detailed description in the document'
+    to 'Adding a long description in the document' and synced the content of
+    that section to labeling changes in the Image Properties dialog
+
+* Update Usability Test Pages
+  * Add placeholders for image insertion with properties settings
+  * Moved the 'Copy URL to Clipboard' buttons from below to above the images
+  * Revised the long description of calories consumption graph to more closely
+    align with the information in the graph
+  * Added information in the nutrition facts table that was missing compared
+    to the information in the image
+
 ## v1.1.2 – 13 Mar 2019
 
 ### Updates
