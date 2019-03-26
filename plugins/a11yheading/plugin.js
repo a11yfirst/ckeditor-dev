@@ -30,9 +30,9 @@
       var pluginName = 'a11yheading',
           conflictList = [ 'format' ],
           lang = editor.lang.a11yheading;
-
       // The detectConflict method was introduced in CKEditor v4.10.1
-      if ( typeof editor.plugins.detectConflict === 'function' ) {
+      // Deactivated the following if statement until further investigation
+      if ( false && typeof editor.plugins.detectConflict === 'function' ) {
         if ( editor.plugins.detectConflict( pluginName, conflictList ) ) {
           alert( lang.pluginConflict.replace( '%s', conflictList ) );
           return;
