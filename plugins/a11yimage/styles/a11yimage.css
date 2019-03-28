@@ -5,25 +5,27 @@
 }
 
 .a11yimage_dialog .cke_dialog_ui_text.a11yimage_alt_text {
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
 .a11yimage_dialog .cke_dialog_ui_hbox.a11yimage_alt_text_not_required {
-  margin-top: -5px;
+  /*margin-top: -5px;*/
+  margin-top: 4px;
 }
 
 /* Long description */
 .a11yimage_dialog .cke_dialog_ui_select {
-  margin-top: 0 !important;
+  margin-top: 8px !important;
 }
 
 .a11yimage_dialog .cke_dialog_ui_hbox.a11yimage_long_description {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 /* Help link button */
 .a11yimage_dialog .cke_dialog_ui_button.a11yimage_desc_help {
-  margin-top: 12px;
+  margin-top: 20px;
+  margin-bottom: 6px;
   background-color: #f1f1f1;
 }
 
@@ -36,7 +38,7 @@
 }
 
 .a11yimage_dialog .cke_dialog_ui_hbox.a11yimage_caption_checkbox {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .a11yimage_dialog .cke_dialog_ui_fieldset {

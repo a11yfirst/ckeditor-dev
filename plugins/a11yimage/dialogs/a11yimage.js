@@ -408,7 +408,6 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
     ]
   };
 
-
   /* ---------------------------------------------------------------- */
 
   var alternativeTextField = {
@@ -442,10 +441,6 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
 
           if (value.match(/\S/g)) {
             altTextNotRequired.setValue(false);
-            altTextNotRequired.disable()
-          }
-          else {
-            altTextNotRequired.enable()
           }
         },
 
@@ -465,23 +460,23 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
             return true;
           }
 
-          // Testing for empty alt
-          if (altLength === 0) {
-            if (altTextNotRequiredValue) {
-              return confirm(lang.msgAltTextNotRequired);
-            }
-            else {
-              alert(lang.msgAltEmpty);
-              return false;
-            }
+          // Get confirmation of alt text not required
+          if (altTextNotRequiredValue) {
+            return confirm(lang.msgAltTextNotRequired);
           }
 
-          // Testing for long text alternative
+          // Test for empty alt
+          if (altLength === 0) {
+            alert(lang.msgAltEmpty);
+            return false;
+          }
+
+          // Test length of text alternative
           if (altLength > lang.alternativeTextMaxLength) {
             return confirm(lang.msgAltTooLong.replace('%s1', alt.trim().length).replace('%s2', lang.alternativeTextMaxLength));
           }
 
-          // Testing for file names in alternative text
+          // Test for file names in alternative text
           for (i = 0; i < lang.altContainsFilename.length; i++) {
             s = lang.altContainsFilename[i];
             if (altNormalized.indexOf(s) >= 0) {
@@ -490,7 +485,7 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
             }
           }
 
-          // Testing for common cases of invalid alternative text
+          // Test for common cases of invalid alternative text
           for (i = 0; i < lang.altIsInvalid.length; i++) {
             if (altNormalized === lang.altIsInvalid[i]) {
               alert(lang.msgAltPrefix + '\n\n' + lang.msgAltIsInvalid.replace('%s', alt));
@@ -498,7 +493,7 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
             }
           }
 
-          // Testing for alternative text starting with "image",...
+          // Test for alternative text starting with invalid word or phrase
           for (i = 0; i < lang.altStartsWithInvalid.length; i++) {
             if (altNormalized.indexOf(lang.altStartsWithInvalid[i]) === 0) {
               alert(lang.msgAltPrefix + '\n\n' +
@@ -507,7 +502,7 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
             }
           }
 
-          // Testing for alternative text ending with with "bytes",...
+          // Test for alternative text ending with with invalid word or phrase
           for (i = 0; i < lang.altEndsWithInvalid.length; i++) {
             var s = lang.altEndsWithInvalid[i];
             if (altNormalized.substring((altLength-s.length),altLength) === s) {
@@ -518,10 +513,16 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
           return true;
         },
 
-        // trim alternative text before returning value to the document
+        // Trim alternative text before returning value to the document
         commit: function ( widget ) {
 
-          var longDescValue = this.getDialog().getContentElement( 'info', 'longDescOptions').getValue();
+          var longDescValue = this.getDialog().getContentElement( 'info', 'longDescSelect').getValue();
+
+          var altTextNotRequired = this.getDialog().getContentElement( 'info', 'altTextNotRequiredCheckbox');
+          if ( altTextNotRequired.getValue() ) {
+            this.setValue( '' );
+            widget.setData( 'alt', '' );
+          }
 
           var alt = this.getValue().trim();
 
@@ -544,7 +545,6 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
               default:
                 break;
             }
-
           }
 
           widget.setData( 'alt', alt );
@@ -580,12 +580,32 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
             if (widget.data.alt.length === 0) {
               this.setValue( true );
             }
-            else {
-              this.disable();
-            }
           }
         }
-      }
+      },
+
+      onChange: function ( widget ) {
+        var altText  = this.getDialog().getContentElement( 'info', 'altText');
+        var altTextValue = altText.getValue().trim();
+        var longDescSelect = this.getDialog().getContentElement( 'info', 'longDescSelect');
+
+        if ( this.getValue() === true ) {
+          longDescSelect.disable();
+          if ( altTextValue.length ) {
+            altText.disable();
+          }
+        }
+        else {
+          longDescSelect.enable();
+          altText.enable();
+          altText.focus();
+          /*
+          if ( altTextValue.length ) {
+            altText.focus();
+          }
+          */
+        }
+      },
     } ]
   };
 
@@ -597,7 +617,7 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
     title: lang.longDescTitle,
     children: [ {
       type: 'select',
-      id: 'longDescOptions',
+      id: 'longDescSelect',
       label: lang.longDescLabel,
       style: 'width : 100%;',
       'items': [
@@ -671,6 +691,20 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
       }
     }
   };
+
+  /* ---------------------------------------------------------------- */
+
+  var accessibleDescFieldset = {
+    id: 'accessibleDescriptions',
+    type: 'fieldset',
+    label: 'Accessible Descriptions',
+    children: [
+      alternativeTextField,
+      altTextNotRequiredCheckbox,
+      longDescriptionSelect,
+      imageDescriptionHelp,
+    ]
+  }
 
   /* ---------------------------------------------------------------- */
 
@@ -754,13 +788,7 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
 
           urlField,
 
-          alternativeTextField,
-
-          altTextNotRequiredCheckbox,
-
-          longDescriptionSelect,
-
-          imageDescriptionHelp,
+          accessibleDescFieldset,
 
           captionCheckbox,
 

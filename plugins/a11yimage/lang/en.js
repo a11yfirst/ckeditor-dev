@@ -31,7 +31,8 @@ complex image, including, but not limited to, people with visual impairments',
   longDescAfter: 'Long description is located just after the image',
   longDescBoth: 'Long description is located before and after the image',
 
-  imageDescHelpLabel: 'Help: Accessible image descriptions',
+  // imageDescHelpLabel: 'Help: Accessible image descriptions',
+  imageDescHelpLabel: 'Help',
 
   // Caption
   captionLabel: 'Insert a caption text box below the image',
