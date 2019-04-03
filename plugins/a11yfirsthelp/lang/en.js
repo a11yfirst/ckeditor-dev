@@ -496,6 +496,18 @@ understood by all readers.\n\
   Illinois at Urbana-Champaign\n\
 * School of Information Sciences (iSchool), University of Illinois at\n\
   Urbana-Champaign\n\
+\n\
+### Acknowledgements\n\
+\n\
+Many of the ideas and motivations for the A11yFirst Project were the result of\n\
+work done previously by a group of software developers, led by Mike Scott, who\n\
+created the OneNet content management system, which includes as its centerpiece\n\
+an accessible WYSIWYG editor.\n\
+\n\
+The OneNet CMS has been in use by the State of Illinois since the mid 2000\'s.\n\
+\n\
+Mr. Scott also participated in the requirements gathering phase of the\n\
+A11yFirst Project.\n\
 '
   }
 
