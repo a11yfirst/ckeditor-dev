@@ -2,6 +2,33 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.1.4 — 3 Apr 2019
+
+### Updates
+
+* Image dialog labels, messages, logic and layout
+  * Added a fieldset labeled 'Accessible Descriptions' around the alternative
+    text, long description and help widgets.
+  * The fieldset allowed the help button label to be shortened to 'Help'.
+  * The behavioral interactions between the 'Alternative text' input field and
+    the 'Image does not require alternative text' checkbox was reworked to
+    make the relationship between the two widgets more obvious. When the
+    checkbox is selected: (1) if the alt. text field is empty, it remains
+    enabled, and typing characters into it causes the checkbox to be
+    deselected; (2) if there is text in the alt. text field, it is disabled.
+  * If the user selected the dialog box 'OK' button and both of the following
+    are true: 'Image does not require alternative text' is checked and the
+    'Alternative text' field is not empty, additional messaging was added to
+    warn that the alternative text will be removed.
+
+* Usability test pages
+  * Added 'New Blog Entry' tab with blank editor pane and Edit/Save button.
+
+* A11yFirst Help
+  * Added a section entitled 'Acknowledgements' to the 'About A11yFirst' topic
+    that cites the influence on A11yFirst of prior work done by a group of
+    developers led by Mike Scott on the OneNet CMS and WYSIWYG editor.
+
 ## v1.1.3 — 26 Mar 2019
 
 ### Updates
