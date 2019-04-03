@@ -456,57 +456,62 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
           var srcValue = this.getDialog().getContentElement( 'info', 'src').getValue();
 
           // Testing for empty src attribute, if empty let it validate first
-          if (srcValue.length === 0) {
+          if ( srcValue.length === 0 ) {
             return true;
           }
 
           // Get confirmation of alt text not required
-          if (altTextNotRequiredValue) {
-            return confirm(lang.msgAltTextNotRequired);
+          if ( altTextNotRequiredValue ) {
+            if ( altLength === 0 ) {
+              return confirm( lang.msgAltTextNotRequired );
+            }
+            else {
+              return confirm( lang.msgAltTextWillBeRemoved );
+            }
           }
 
           // Test for empty alt
-          if (altLength === 0) {
-            alert(lang.msgAltEmpty);
+          if ( altLength === 0 ) {
+            alert( lang.msgAltEmpty );
             return false;
           }
 
           // Test length of text alternative
-          if (altLength > lang.alternativeTextMaxLength) {
-            return confirm(lang.msgAltTooLong.replace('%s1', alt.trim().length).replace('%s2', lang.alternativeTextMaxLength));
+          if ( altLength > lang.alternativeTextMaxLength ) {
+            return confirm( lang.msgAltTooLong.replace( '%s1', alt.trim().length ).replace( '%s2', lang.alternativeTextMaxLength ) );
           }
 
           // Test for file names in alternative text
-          for (i = 0; i < lang.altContainsFilename.length; i++) {
+          for ( i = 0; i < lang.altContainsFilename.length; i++ ) {
             s = lang.altContainsFilename[i];
-            if (altNormalized.indexOf(s) >= 0) {
-              alert(lang.msgAltPrefix + '\n\n' + lang.msgAltContainsFilename.replace('%s', s));
+            if ( altNormalized.indexOf( s ) >= 0 ) {
+              alert( lang.msgAltPrefix + '\n\n' + lang.msgAltContainsFilename.replace( '%s', s ) );
               return false;
             }
           }
 
           // Test for common cases of invalid alternative text
-          for (i = 0; i < lang.altIsInvalid.length; i++) {
-            if (altNormalized === lang.altIsInvalid[i]) {
-              alert(lang.msgAltPrefix + '\n\n' + lang.msgAltIsInvalid.replace('%s', alt));
+          for ( i = 0; i < lang.altIsInvalid.length; i++ ) {
+            if ( altNormalized === lang.altIsInvalid[i] ) {
+              alert( lang.msgAltPrefix + '\n\n' + lang.msgAltIsInvalid.replace( '%s', alt ) );
               return false;
             }
           }
 
           // Test for alternative text starting with invalid word or phrase
-          for (i = 0; i < lang.altStartsWithInvalid.length; i++) {
-            if (altNormalized.indexOf(lang.altStartsWithInvalid[i]) === 0) {
-              alert(lang.msgAltPrefix + '\n\n' +
-                lang.msgAltStartsWithInvalid.replace('%s', alt.substring(0,lang.altStartsWithInvalid[i].length)));
+          for ( i = 0; i < lang.altStartsWithInvalid.length; i++ ) {
+            if ( altNormalized.indexOf( lang.altStartsWithInvalid[i] ) === 0 ) {
+              alert( lang.msgAltPrefix + '\n\n' +
+                lang.msgAltStartsWithInvalid.replace( '%s', alt.substring( 0,lang.altStartsWithInvalid[i].length ) ) );
               return false;
             }
           }
 
           // Test for alternative text ending with with invalid word or phrase
-          for (i = 0; i < lang.altEndsWithInvalid.length; i++) {
+          for ( i = 0; i < lang.altEndsWithInvalid.length; i++ ) {
             var s = lang.altEndsWithInvalid[i];
-            if (altNormalized.substring((altLength-s.length),altLength) === s) {
-              alert(lang.msgAltPrefix + '\n\n' + lang.msgAltEndsWithInvalid);
+            if ( altNormalized.substring( ( altLength - s.length ), altLength ) === s ) {
+              alert( lang.msgAltPrefix + '\n\n' + lang.msgAltEndsWithInvalid );
               return false;
             }
           }
@@ -528,7 +533,7 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
 
           if ( alt.length ) {
             // If alt empty ignore long description options
-            switch (longDescValue) {
+            switch ( longDescValue ) {
 
               case 'before':
                 alt += '; ' + lang.longDescBefore;
@@ -590,20 +595,13 @@ CKEDITOR.dialog.add( 'a11yimage', function ( editor ) {
         var longDescSelect = this.getDialog().getContentElement( 'info', 'longDescSelect');
 
         if ( this.getValue() === true ) {
-          longDescSelect.disable();
           if ( altTextValue.length ) {
             altText.disable();
           }
         }
         else {
-          longDescSelect.enable();
           altText.enable();
           altText.focus();
-          /*
-          if ( altTextValue.length ) {
-            altText.focus();
-          }
-          */
         }
       },
     } ]

@@ -75,6 +75,9 @@ contact your CMS or CKEditor administrator for more information.',
   msgAltPrefix: 'The alternative text should succinctly describe the content of the image.',
   msgAltTextNotRequired: 'An image typically requires alternative text (i.e. a short description) \
 for people with visual impairments using screen readers.\n\nAre you sure you want to continue?',
+  msgAltTextWillBeRemoved: 'An image typically requires alternative text (i.e. a short description) \
+for people with visual impairments using screen readers.\n\nThe alternative text you specified \
+will be removed.\n\nAre you sure you want to continue?',
   msgAltEmpty: 'Please provide alternative text (i.e. a short description of the image) for \
 people with visual impairments using screen readers.',
   msgAltTooLong: 'The alternative text is %s1 characters, which is longer than the recommended \
