@@ -54,12 +54,14 @@ understood by all readers.
 
 ### Acknowledgements
 
-Many of the ideas and motivations for the A11yFirst Project were the result of
-work done previously by a group of software developers, led by Mike Scott, who
-created the OneNet content management system, which includes as its centerpiece
-an accessible WYSIWYG editor.
+Many of the ideas and motivations for the A11yFirst Project were the result
+of work done previously by a group of software developers at the Illinois
+Department of Human Services (DHS), led by Mike Scott, who created the OneNet
+content management system, which includes as its centerpiece an accessible
+WYSIWYG editor.
 
-The OneNet CMS has been in use by the State of Illinois since the mid 2000's.
+The OneNet CMS has been in use by the Illinois DHS since 2006 to promote
+accessible authoring for their intranet and main website.
 
 Mr. Scott also participated in the requirements gathering phase of the
 A11yFirst Project.

@@ -499,12 +499,14 @@ understood by all readers.\n\
 \n\
 ### Acknowledgements\n\
 \n\
-Many of the ideas and motivations for the A11yFirst Project were the result of\n\
-work done previously by a group of software developers, led by Mike Scott, who\n\
-created the OneNet content management system, which includes as its centerpiece\n\
-an accessible WYSIWYG editor.\n\
+Many of the ideas and motivations for the A11yFirst Project were the result\n\
+of work done previously by a group of software developers at the Illinois\n\
+Department of Human Services (DHS), led by Mike Scott, who created the OneNet\n\
+content management system, which includes as its centerpiece an accessible\n\
+WYSIWYG editor.\n\
 \n\
-The OneNet CMS has been in use by the State of Illinois since the mid 2000\'s.\n\
+The OneNet CMS has been in use by the Illinois DHS since 2006 to promote\n\
+accessible authoring for their intranet and main website.\n\
 \n\
 Mr. Scott also participated in the requirements gathering phase of the\n\
 A11yFirst Project.\n\
