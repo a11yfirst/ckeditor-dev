@@ -1,6 +1,6 @@
 /**
-* Copyright (c) 2018 University of Illinois - Jon Gunderson and Nicholas Hoyt. All rights reserved.
-* For licensing, see LICENSE.md or http://ckeditor.com/license
+* @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+* For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 *
 * override.js uses the version of the setState method of the button object that was updated in
 * CKEditor 4.11. Prior versions appended the string '(Selected)' to the button label, which we

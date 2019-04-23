@@ -1,7 +1,13 @@
 /**
-* Copyright (c) 2018 University of Illinois - Jon Gunderson and Nicholas Hoyt. All rights reserved.
-* For licensing, see LICENSE.md or http://ckeditor.com/license
+* Copyright (c) 2016-2019, University of Illinois - Jon Gunderson and Nicholas Hoyt.
+* All rights reserved. For licensing, see LICENSE.md
+*
+* The 'a11yheading' plugin was based originally on the CKSource 'format' plugin:
+*
+* @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+* For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
+
 'use strict';
 
 ( function () {
