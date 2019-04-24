@@ -1,14 +1,18 @@
-# A11yFirst Help
+# a11yfirsthelp
 
 ## Overview
 
-This plug-in adds a dialog box to CKEditor explaining:
+This plugin adds a menu button labeled ‘A11yFirst Help’ to the CKEditor toolbar,
+which contains menu items for various help topics, each of which invokes a dialog
+box with content that explains:
 
 * How to get started using A11yFirst for CKEditor and why accessibility
   is important
 
 * How to work with the A11yFirst features, as well as a few of the standard
   features included in CKEditor that are important for accessibility
+
+* The purpose of, and contributors to, the A11yFirst Project
 
 ## Help Topics & Subtopics
 
@@ -23,19 +27,19 @@ This plug-in adds a dialog box to CKEditor explaining:
 ### List
 
 * Working with lists
+* List properties via context menu
 * About lists
 * Why lists are important
 
 ### Image
 
-* Accessible Description
-* Type of Image
-* Text Alternative
-* Document includes long description
-* Location of long description
-* Include an editable caption
-* Why image properties are important
-* Writing effective text alternative content
+* Accessible image descriptions
+* Alternative text
+* Long descriptions for complex images
+* Adding a long description in the document
+* Insert a caption text box below the image
+* Writing effective alternative text
+* Why image descriptions are important
 * More information
 
 ### Character Style
