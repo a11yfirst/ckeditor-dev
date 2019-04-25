@@ -35,7 +35,8 @@ It updates that plugin with the following modifications:
 
 * Placed in first position of first row of toolbar
 
-* Checkmark next to menu item indicates current heading or paragraph format (based on cursor position)
+* Checkmark next to menu item indicates (based on cursor position) the current
+  heading level or paragraph format
 
 * Configuration: same syntax as `format` plugin
 
