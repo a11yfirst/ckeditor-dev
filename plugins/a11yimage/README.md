@@ -21,11 +21,14 @@ It updates that plugin with the following modifications:
 
 * Provides a Help button
 
-## Accessibility Principles
+## A11y considerations
 
 * People with visual impairments need text descriptions of informative images.
 
 * Each informative image must at least have alternative text.
+
+* Alternative text should be succinct and should not include redundant or
+  irrelevant information.
 
 * An image that is purely decorative should have an empty `alt` attribute
   (thus there should be a way to indicate that an image is decorative).

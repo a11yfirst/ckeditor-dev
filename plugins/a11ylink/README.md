@@ -15,7 +15,7 @@ It updates that plugin with the following modifications:
 
 * Provides a Help button
 
-## Accessibility Principles
+## A11y considerations
 
 * The display text for a link should describe the target of the link.
 

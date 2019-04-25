@@ -41,7 +41,7 @@ It updates that plugin with the following modifications:
 
 * Menu provides a Help menu item
 
-## Accessibility Principles
+## A11y considerations
 
 * It is important to use headings to demarcate and label the structure
   of your document. This allows screen reader users to quickly and easily

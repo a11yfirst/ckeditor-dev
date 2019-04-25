@@ -15,6 +15,6 @@ It updates that plugin with the following modifications:
 
 * Menu provides a Help menu item
 
-## Accessibility Principle
+## A11y considerations
 
 * Visual styling alone should not be used in place of heading or list markup.
