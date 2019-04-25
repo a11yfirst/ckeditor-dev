@@ -13,8 +13,22 @@ It updates that plugin with the following modifications:
 
 * Detects use of file name or size in Alt. Text
 
-* For a decorative image, allows the user to indicate that Alt. Text is not required
+* For a decorative image, allows the user to indicate that Alt. Text is not
+  required
 
-* Asks the user whether a Long Description is needed, and if so, where it will be located in the document
+* Asks the user whether a Long Description is needed, and if so, where it will
+  be located in the document
 
 * Provides a Help button
+
+## Accessibility Principles
+
+* People with visual impairments need text descriptions of informative images.
+
+* Each informative image must at least have alternative text.
+
+* An image that is purely decorative should have an empty `alt` attribute
+  (thus there should be a way to indicate that an image is decorative).
+
+* A complex informative image should have a long description in the document,
+  adjacent to the image.

@@ -40,3 +40,13 @@ It updates that plugin with the following modifications:
 * Configuration: same syntax as `format` plugin
 
 * Menu provides a Help menu item
+
+## Accessibility Principles
+
+* It is important to use headings to demarcate and label the structure
+  of your document. This allows screen reader users to quickly and easily
+  navigate from one section to another.
+
+* Headings should be used sequentially. If a screen reader user, for example,
+  is trying to understand the context of a level 4 heading and/or its content,
+  and there is no corresponding level 3 heading, that can be confusing.

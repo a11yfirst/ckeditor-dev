@@ -14,3 +14,7 @@ It updates that plugin with the following modifications:
 * Configuration: same syntax as `stylescombo` plugin
 
 * Menu provides a Help menu item
+
+## Accessibility Principle
+
+* Visual styling alone should not be used in place of heading or list markup.

@@ -14,3 +14,9 @@ It updates that plugin with the following modifications:
 * Detects the use of ‘click here,’ ‘more’ et al.
 
 * Provides a Help button
+
+## Accessibility Principles
+
+* The display text for a link should describe the target of the link.
+
+* URLs are typically not very descriptive when used as display text.
