@@ -2,6 +2,25 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.2.0 — 26 Apr 2019
+
+### Updates
+
+* ZIP and README files
+  * Zip files (one for each A11yFirst plugin) are located in the 'custom/zip'
+    folder. Intended use is for submitting our plugins as add-ons to CKSource.
+
+  * A bash script, 'custom/scripts/zip_plugins.sh', was added that creates a
+    zip file in the 'custom/zip' folder for each A11yFirst plugin.
+
+  * Updated the 'README.md' file in each A11yFirst plugin folder, each of
+    which is included in its corresponding zip file.
+
+  * Updated 'custom/README.md', which provides an overview of the A11yFirst
+    Project and each of its plugins.
+
+* Updated copyright notices in A11yFirst plugin JavaScript files.
+
 ## v1.1.4 — 3 Apr 2019
 
 ### Updates
