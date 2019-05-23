@@ -363,18 +363,31 @@
       return element;
     },
 
+    /*
+    *   getAllowedHeadings: Returns an array of heading tags that represents
+    *   the heading levels that are in sequence at the selectedElement point
+    *   in the document, based on the previous and next headings already in
+    *   the document.
+    */
     getAllowedHeadings: function ( editor ) {
       var selectedElement = editor.getSelection().getStartElement();
       // console.log('SELECTED ELEMENT: ' + selectedElement.getName() );
 
-      var lastHeading = null,
-          plugin = this;
+      var prevHeading = null,
+          nextHeading = null,
+          foundSelectedElement = false,
+          plugin = this,
+          indexPrev,
+          indexNext,
+          allowed;
 
       /*
-      *   Note: The getLastHeading function modifies the
-      *   lastHeading variable in its outer scope.
+      *   getPrevHeading: Recursively traverses elements in document. If a
+      *   heading element is found, sets var 'prevHeading' (in outer scope)
+      *   to the heading tag name. Returns when 'selectedElement' or end of
+      *   document is reached.
       */
-      function getLastHeading ( element ) {
+      function getPrevHeading ( element ) {
         if ( typeof element.getName !== 'function' )
           return false;
 
@@ -384,39 +397,105 @@
         var tagName = element.getName();
 
         if ( plugin.isHeadingElement( tagName ) )
-          lastHeading = tagName;
+          prevHeading = tagName;
 
         var children = element.getChildren();
         var count = children.count();
 
         for ( var i = 0; i < count; i++ ) {
-          if ( getLastHeading( children.getItem( i ) ) )
+          if ( getPrevHeading( children.getItem( i ) ) )
             return true;
         }
         return false;
 
       } // end function
 
-      getLastHeading( editor.document.getBody() );
-      // console.log( 'LAST HEADING: ' + lastHeading );
+      /*
+      *   getNextHeading: Recursively traverses elements in document. If
+      *   'selectedElement' is reached, sets var 'foundSelectedElement' (in
+      *   outer scope) to true. Returns when 'foundSelectedElement' is true
+      *   AND a heading element is found (after setting var 'nextHeading' in
+      *   outer scope to the heading tag name) or when end of document is
+      *   reached.
+      *
+      */
+      function getNextHeading ( element ) {
+        if ( typeof element.getName !== 'function' )
+          return false;
 
-      if ( lastHeading === null )
-        return headingTags.slice( 0, 1 );
+        if ( element.equals( selectedElement ) )
+          foundSelectedElement = true;
 
-      var index = headingTags.indexOf( lastHeading );
-      if ( index >= 0 ) {
-        var retVal = headingTags.slice( startIndex, index + 1 );
-        if ( index < endIndex ) {
-          retVal.push( headingTags[ index + 1 ] );
+        var tagName = element.getName();
+
+        if ( foundSelectedElement && plugin.isHeadingElement( tagName ) ) {
+          nextHeading = tagName;
+          return true;
         }
-        return retVal;
+
+        var children = element.getChildren();
+        var count = children.count();
+
+        for ( var i = 0; i < count; i++ ) {
+          if ( getNextHeading( children.getItem( i ) ) )
+            return true;
+        }
+        return false;
+
+      } // end function
+
+      getPrevHeading( editor.document.getBody() );
+      console.log( 'PREV HEADING: ' + prevHeading );
+
+      getNextHeading( editor.document.getBody() );
+      console.log( 'NEXT HEADING: ' + nextHeading );
+
+      // If there is no previous heading, return an array with one element:
+      // the first (i.e. highest-level) heading in headingTags
+      if ( prevHeading === null ) {
+        return headingTags.slice( 0, 1 );
       }
 
-      // lastHeading not in headingTags array => lexical comparison
-      if ( lastHeading < headingTags[ 0 ] )
+      // There is a previous heading, so get its headingTags index
+      var indexPrev = headingTags.indexOf( prevHeading );
+
+      if ( indexPrev >= 0 ) {
+        if ( nextHeading === null ) {
+          // We don't have to worry about look-ahead issues...
+          // The allowed headings includes all heading levels higher than
+          // indexPrev, through and including the heading one level lower.
+
+          // Note that if (indexPrev + 2) is greater than the last index
+          // in headingTags, the slice fn. will interpret this to mean that
+          // the endpoint is the last item in the array.
+          allowed = headingTags.slice( startIndex, indexPrev + 2 );
+        }
+        else {
+          // There is a next heading, so deal with having both a previous
+          // and a next heading. There are three cases for how their indices
+          // compare to each other numerically.
+          indexNext = headingTags.indexOf( nextHeading );
+          if ( indexNext >= 0 ) {
+            if ( indexPrev < indexNext ) {
+               // Only allow indexPrev and indexNext
+              allowed = headingTags.slice( Math.max( startIndex, indexPrev ), indexPrev + 2 );
+            }
+            if ( indexPrev === indexNext ) {
+              allowed = headingTags.slice( Math.max( startIndex, indexPrev - 1 ), indexPrev + 2 );
+            }
+            if ( indexPrev > indexNext ) {
+              allowed = headingTags.slice( startIndex, indexPrev + 2 );
+            }
+          }
+        }
+        return allowed;
+      }
+
+      // prevHeading not in headingTags array => lexical comparison
+      if ( prevHeading < headingTags[ 0 ] )
         return headingTags.slice( startIndex, startIndex + 1 );
 
-      if ( lastHeading > headingTags[ endIndex ] )
+      if ( prevHeading > headingTags[ endIndex ] )
         return headingTags.slice( startIndex );
 
     } // end method getAllowedHeadings
