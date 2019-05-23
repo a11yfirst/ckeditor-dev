@@ -365,10 +365,10 @@
           indexNext;
 
       /*
-      *   getPrevHeading: Recursively traverses elements in document. If a
-      *   heading element is found, sets var 'prevHeading' (in outer scope)
-      *   to the heading tag name. Returns when 'selectedElement' or end of
-      *   document is reached.
+      *   getPrevHeading: Recursively traverses elements in document. Each
+      *   time a heading element is found, sets var 'prevHeading' (in outer
+      *   scope) to the heading tag name. Returns when 'selectedElement' or
+      *   end of document is reached.
       */
       function getPrevHeading ( element ) {
         if ( typeof element.getName !== 'function' )
@@ -394,7 +394,7 @@
       } // end function
 
       /*
-      *   getNextHeading: Recursively traverses elements in document. If
+      *   getNextHeading: Recursively traverses elements in document. When
       *   'selectedElement' is reached, sets var 'foundSelectedElement' (in
       *   outer scope) to true. Returns when 'foundSelectedElement' is true
       *   AND a heading element is found (after setting var 'nextHeading' in
