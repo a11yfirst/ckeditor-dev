@@ -346,28 +346,11 @@
       return formats;
     },
 
-    getCurrentHeadingElement: function ( editor ) {
-      var elementPath = editor.elementPath(),
-          activePath = elementPath && elementPath.elements,
-          pathMember, element;
-
-      // IE8: Upon initialization if there is no path, elementPath() returns null.
-      if ( elementPath ) {
-        for ( var i = 0; i < activePath.length; i++ ) {
-          pathMember = activePath[ i ];
-          if ( !element && this.isHeadingElement( pathMember.getName() ) )
-            element = pathMember;
-        }
-      }
-
-      return element;
-    },
-
     /*
     *   getAllowedHeadings: Returns an array of heading tags that represents
     *   the heading levels that are in sequence at the selectedElement point
     *   in the document, based on the previous and next headings already in
-    *   the document.
+    *   the document, if they exist.
     */
     getAllowedHeadings: function ( editor ) {
       var selectedElement = editor.getSelection().getStartElement();
@@ -377,9 +360,9 @@
           nextHeading = null,
           foundSelectedElement = false,
           plugin = this,
+          allowedHeadings,
           indexPrev,
-          indexNext,
-          allowed;
+          indexNext;
 
       /*
       *   getPrevHeading: Recursively traverses elements in document. If a
@@ -468,27 +451,32 @@
           // Note that if (indexPrev + 2) is greater than the last index
           // in headingTags, the slice fn. will interpret this to mean that
           // the endpoint is the last item in the array.
-          allowed = headingTags.slice( startIndex, indexPrev + 2 );
+          allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
         }
         else {
           // There is a next heading, so deal with having both a previous
           // and a next heading. There are three cases for how their indices
-          // compare to each other numerically.
+          // compare to each other numerically, when indexNext is valid.
           indexNext = headingTags.indexOf( nextHeading );
           if ( indexNext >= 0 ) {
             if ( indexPrev < indexNext ) {
-               // Only allow indexPrev and indexNext
-              allowed = headingTags.slice( Math.max( startIndex, indexPrev ), indexPrev + 2 );
+               // Only allow indexPrev and (indexPrev + 1) (exclude one level up)
+              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexPrev + 2 );
             }
             if ( indexPrev === indexNext ) {
-              allowed = headingTags.slice( Math.max( startIndex, indexPrev - 1 ), indexPrev + 2 );
+              // Only allow one level up, same level, or one level down
+              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev - 1 ), indexPrev + 2 );
             }
             if ( indexPrev > indexNext ) {
-              allowed = headingTags.slice( startIndex, indexPrev + 2 );
+              allowedHeadings = headingTags.slice( Math.max( startIndex, indexNext - 1 ), indexPrev + 2 );
             }
           }
+          else {
+            // nextHeading is not in headingTags array: treat as if (nextHeading === null) ???
+            allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
+          }
         }
-        return allowed;
+        return allowedHeadings;
       }
 
       // prevHeading not in headingTags array => lexical comparison
