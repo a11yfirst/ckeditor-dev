@@ -67,8 +67,8 @@ CKEDITOR.editorConfig = function ( config ) {
   config.startupFocus = true;
 
   // a11yheading configuration
-  config.allow_only_one_h1 = true;
-  config.format_tags = 'h1;h2;h3;h4;p;pre;address';
+  config.allow_only_one_h1 = false;
+  config.format_tags = 'h1;h2;h3;h4;h5;h6;p;pre;address';
 
   config.plugins =
     'a11yhelp,' +
