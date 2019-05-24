@@ -434,8 +434,11 @@
       console.log( 'NEXT HEADING: ' + nextHeading );
 
       // If there is no previous heading, return an array with one element:
-      // the first (i.e. highest-level) heading in headingTags
+      // the first (highest-level) heading in the headingTags array. Note that
+      // we don't use startIndex in this case.
       if ( prevHeading === null ) {
+        // TODO: Include test for h1 already in document when insertion point is before
+        // any headings, and if true, return empty array.
         return headingTags.slice( 0, 1 );
       }
 
@@ -460,11 +463,7 @@
           indexNext = headingTags.indexOf( nextHeading );
           if ( indexNext >= 0 ) {
             if ( indexPrev < indexNext ) {
-              // Only allow indexPrev and (indexPrev + 1) (exclude one level up)
-              // allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexPrev + 2 );
-
               // Allow indexPrev through indexNext; exclude levels above indexPrev
-              // (This is less restrictive than the previous line of code.)
               allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
             }
             if ( indexPrev === indexNext ) {
@@ -472,11 +471,12 @@
               allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev - 1 ), indexPrev + 2 );
             }
             if ( indexPrev > indexNext ) {
-              allowedHeadings = headingTags.slice( Math.max( startIndex, indexNext - 1 ), indexPrev + 2 );
+              // Allow range from startIndex through one level below indexPrev
+              allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
             }
           }
           else {
-            // nextHeading is not in headingTags array: treat as if (nextHeading === null) ???
+            // nextHeading is not in headingTags array: treat as if (nextHeading === null)
             allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
           }
         }
