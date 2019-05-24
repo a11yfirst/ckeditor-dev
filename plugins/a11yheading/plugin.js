@@ -460,8 +460,12 @@
           indexNext = headingTags.indexOf( nextHeading );
           if ( indexNext >= 0 ) {
             if ( indexPrev < indexNext ) {
-               // Only allow indexPrev and (indexPrev + 1) (exclude one level up)
-              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexPrev + 2 );
+              // Only allow indexPrev and (indexPrev + 1) (exclude one level up)
+              // allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexPrev + 2 );
+
+              // Allow indexPrev through indexNext; exclude levels above indexPrev
+              // (This is less restrictive than the previous line of code.)
+              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
             }
             if ( indexPrev === indexNext ) {
               // Only allow one level up, same level, or one level down
