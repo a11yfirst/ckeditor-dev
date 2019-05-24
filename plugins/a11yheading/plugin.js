@@ -17,6 +17,7 @@
       allFormats  = [ 'p', 'pre', 'address', 'div' ],
       headingTags = [],
       formatTags  = [],
+      onlyOneH1Allowed,
       startIndex,
       endIndex;
 
@@ -132,15 +133,15 @@
 
       var config = editor.config,
         lang = editor.lang.a11yheading,
-        oneLevel1 = typeof config.allow_only_one_h1 === 'undefined' ? true : config.allow_only_one_h1,
         plugin = this,
         items = {},
         headingTag,
         formatTag;
 
-      // Initialize headingTags array and indices used by getAllowedHeadings
+      // Initialize headingTags array and variables used by getAllowedHeadings
       headingTags = this.getHeadingTags( config );
-      startIndex = oneLevel1 && headingTags[0] === 'h1' ? 1 : 0;
+      onlyOneH1Allowed = typeof config.allow_only_one_h1 === 'undefined' ? true : config.allow_only_one_h1;
+      startIndex = onlyOneH1Allowed && headingTags[0] === 'h1' ? 1 : 0;
       endIndex = headingTags.length - 1;
 
       // Initialize formatTags array
@@ -427,18 +428,29 @@
 
       } // end function
 
+      /*
+      *   h1ElementFound: Returns a boolean value indicating whether there is
+      *   an h1 element in the document.
+      */
+      function h1ElementFound () {
+        return editor.document.findOne( 'h1' ) !== null;
+      }
+
       getPrevHeading( editor.document.getBody() );
-      console.log( 'PREV HEADING: ' + prevHeading );
+      // console.log( 'PREV HEADING: ' + prevHeading );
 
       getNextHeading( editor.document.getBody() );
-      console.log( 'NEXT HEADING: ' + nextHeading );
+      // console.log( 'NEXT HEADING: ' + nextHeading );
 
-      // If there is no previous heading, return an array with one element:
-      // the first (highest-level) heading in the headingTags array. Note that
-      // we don't use startIndex in this case.
+      // If there is no previous heading, there are two possible cases:
+      // (1) If the plugin config specifies that only one h1 is allowed in the
+      //     document, and it already has an h1, return an empty array.
+      // (2) Otherwise return an array with one element: the highest-level
+      //     heading in the headingTags array. Note that we don't use
+      //     startIndex in this case.
       if ( prevHeading === null ) {
-        // TODO: Include test for h1 already in document when insertion point is before
-        // any headings, and if true, return empty array.
+        if ( onlyOneH1Allowed && h1ElementFound() )
+          return [];
         return headingTags.slice( 0, 1 );
       }
 
