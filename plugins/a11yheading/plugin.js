@@ -399,12 +399,13 @@
 
       /*
       *   getNextHeading: Recursively traverses elements in document. When
-      *   'selectedElement' is reached, sets var 'foundSelectedElement' (in
-      *   outer scope) to true and returns false. When 'foundSelectedElement'
+      *   'selectedElement' is reached, sets var 'foundSelectedElement' in
+      *   outer scope to true and returns false. When 'foundSelectedElement'
       *   is true AND a heading element is found,  sets var 'nextHeading' in
       *   outer scope to the heading tag name and returns true. If end of
       *   document is reached but no nextHeading is found, returns false.
-      *
+      *   Bottom line: Go past 'selectedElement', even when it's a heading,
+      *   to find 'nextHeading'.
       */
       function getNextHeading ( element ) {
         var tagName, children, count;
@@ -475,14 +476,27 @@
           allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
         }
         else {
-          // There is a next heading, so deal with having both a previous
-          // and a next heading. There are three cases for how their indices
+          // There is a next heading, so we have both a previous and a next
+          // heading. There are three general cases for how their indices
           // compare to each other numerically, when indexNext is valid.
           indexNext = headingTags.indexOf( nextHeading );
           if ( indexNext >= 0 ) {
             if ( indexPrev < indexNext ) {
-              // Allow indexPrev through indexNext; exclude levels above indexPrev
-              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
+              var diff = indexNext - indexPrev;
+              switch ( diff ) {
+                case 1:
+                  // Allow indexPrev through indexNext; exclude levels above indexPrev
+                  allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
+                  break;
+                case 2:
+                  // Only allow indexPrev + 1
+                  allowedHeadings = headingTags.slice( indexPrev + 1, indexPrev + 2 );
+                  break;
+                default:
+                  // For diff > 2, anything goes (see comment for nextHeading === null)
+                  allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
+                  break;
+              }
             }
             if ( indexPrev === indexNext ) {
               // Only allow one level up, same level, or one level down
