@@ -354,16 +354,17 @@
     *   the document, if they exist.
     */
     getAllowedHeadings: function ( editor ) {
-      var selectedElement = editor.getSelection().getStartElement();
-      // console.log('SELECTED ELEMENT: ' + selectedElement.getName() );
-
-      var prevHeading = null,
+      var plugin = this,
+          prevHeading = null,
           nextHeading = null,
           foundSelectedElement = false,
-          plugin = this,
+          selectedElement,
           allowedHeadings,
           indexPrev,
           indexNext;
+
+      selectedElement = editor.getSelection().getStartElement();
+      console.log('SELECTED ELEMENT: ' + selectedElement.getName() );
 
       /*
       *   getPrevHeading: Recursively traverses elements in document. Each
@@ -372,19 +373,21 @@
       *   end of document is reached.
       */
       function getPrevHeading ( element ) {
+        var tagName, children, count;
+
         if ( typeof element.getName !== 'function' )
           return false;
 
         if ( element.equals( selectedElement ) )
           return true;
 
-        var tagName = element.getName();
-
-        if ( plugin.isHeadingElement( tagName ) )
+        tagName = element.getName();
+        if ( plugin.isHeadingElement( tagName ) ) {
           prevHeading = tagName;
+        }
 
-        var children = element.getChildren();
-        var count = children.count();
+        children = element.getChildren();
+        count = children.count();
 
         for ( var i = 0; i < count; i++ ) {
           if ( getPrevHeading( children.getItem( i ) ) )
@@ -397,28 +400,31 @@
       /*
       *   getNextHeading: Recursively traverses elements in document. When
       *   'selectedElement' is reached, sets var 'foundSelectedElement' (in
-      *   outer scope) to true. Returns when 'foundSelectedElement' is true
-      *   AND a heading element is found (after setting var 'nextHeading' in
-      *   outer scope to the heading tag name) or when end of document is
-      *   reached.
+      *   outer scope) to true and returns false. When 'foundSelectedElement'
+      *   is true AND a heading element is found,  sets var 'nextHeading' in
+      *   outer scope to the heading tag name and returns true. If end of
+      *   document is reached but no nextHeading is found, returns false.
       *
       */
       function getNextHeading ( element ) {
+        var tagName, children, count;
+
         if ( typeof element.getName !== 'function' )
           return false;
 
-        if ( element.equals( selectedElement ) )
+        if ( element.equals( selectedElement ) ) {
           foundSelectedElement = true;
+          return false;
+        }
 
-        var tagName = element.getName();
-
+        tagName = element.getName();
         if ( foundSelectedElement && plugin.isHeadingElement( tagName ) ) {
           nextHeading = tagName;
           return true;
         }
 
-        var children = element.getChildren();
-        var count = children.count();
+        children = element.getChildren();
+        count = children.count();
 
         for ( var i = 0; i < count; i++ ) {
           if ( getNextHeading( children.getItem( i ) ) )
@@ -437,10 +443,10 @@
       }
 
       getPrevHeading( editor.document.getBody() );
-      // console.log( 'PREV HEADING: ' + prevHeading );
+      console.log( 'PREV HEADING: ' + prevHeading );
 
       getNextHeading( editor.document.getBody() );
-      // console.log( 'NEXT HEADING: ' + nextHeading );
+      console.log( 'NEXT HEADING: ' + nextHeading );
 
       // If there is no previous heading, there are two possible cases:
       // (1) If the plugin config specifies that only one h1 is allowed in the
@@ -455,7 +461,7 @@
       }
 
       // There is a previous heading, so get its headingTags index
-      var indexPrev = headingTags.indexOf( prevHeading );
+      indexPrev = headingTags.indexOf( prevHeading );
 
       if ( indexPrev >= 0 ) {
         if ( nextHeading === null ) {
