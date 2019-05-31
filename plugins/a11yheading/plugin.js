@@ -368,8 +368,8 @@
 
       /*
       *   getPrevHeading: Recursively traverses elements in document. Each
-      *   time a heading element is found, sets var 'prevHeading' (in outer
-      *   scope) to the heading tag name. Returns when 'selectedElement' or
+      *   time a heading element is found, sets var 'prevHeading' in outer
+      *   scope to the heading tag name. Returns when 'selectedElement' or
       *   end of document is reached.
       */
       function getPrevHeading ( element ) {
@@ -485,12 +485,12 @@
               var diff = indexNext - indexPrev;
               switch ( diff ) {
                 case 1:
-                  // Allow indexPrev through indexNext; exclude levels above indexPrev
-                  allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
-                  break;
                 case 2:
-                  // Only allow indexPrev + 1
-                  allowedHeadings = headingTags.slice( indexPrev + 1, indexPrev + 2 );
+                  // Allow indexPrev through indexNext; exclude levels above indexPrev
+                  // Note: For case 2, we have opted to not require closing the gap
+                  // (i.e. only allowing the level in between indexPrev and indexNext)
+                  // because we consider that approach too restrictive.
+                  allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
                   break;
                 default:
                   // For diff > 2, anything goes (see comment for nextHeading === null)
