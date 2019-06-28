@@ -476,11 +476,11 @@
           allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
         }
         else {
-          // We have both a previous and a next heading. When indexNext is
-          // valid, there are three scenarios that cover how their indices
-          // compare numerically.
+          // There is a next heading, so get its headingTags index
           indexNext = headingTags.indexOf( nextHeading );
           if ( indexNext >= 0 ) {
+            // We have both a valid previous and a valid next heading: Handle
+            // the three scenarios for how their indices compare numerically.
             if ( indexPrev < indexNext ) {
               // Allow range from indexPrev through indexNext; exclude levels above indexPrev
               allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
