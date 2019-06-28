@@ -476,35 +476,22 @@
           allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
         }
         else {
-          // There is a next heading, so we have both a previous and a next
-          // heading. There are three general cases for how their indices
-          // compare to each other numerically, when indexNext is valid.
+          // We have both a previous and a next heading. When indexNext is
+          // valid, there are three scenarios that cover how their indices
+          // compare numerically.
           indexNext = headingTags.indexOf( nextHeading );
           if ( indexNext >= 0 ) {
             if ( indexPrev < indexNext ) {
-              var diff = indexNext - indexPrev;
-              switch ( diff ) {
-                case 1:
-                case 2:
-                  // Allow indexPrev through indexNext; exclude levels above indexPrev
-                  // Note: For case 2, we have opted to not require closing the gap
-                  // (i.e. only allowing the level in between indexPrev and indexNext)
-                  // because we consider that approach too restrictive.
-                  allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
-                  break;
-                default:
-                  // For diff > 2, anything goes (see comment for nextHeading === null)
-                  allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
-                  break;
-              }
+              // Allow range from indexPrev through indexNext; exclude levels above indexPrev
+              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
             }
             if ( indexPrev === indexNext ) {
-              // Only allow one level up, same level, or one level down
+              // Allow one level above, same level, or one level below indexPrev
               allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev - 1 ), indexPrev + 2 );
             }
             if ( indexPrev > indexNext ) {
-              // Allow range from startIndex through one level below indexPrev
-              allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
+              // Allow range from one level above indexNext through one level below indexPrev
+              allowedHeadings = headingTags.slice( Math.max( startIndex, indexNext - 1 ), indexPrev + 2 );
             }
           }
           else {
