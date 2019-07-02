@@ -128,7 +128,7 @@
       if ( incompatibleVersionOfButtonPlugin() ) {
         // Load the override script to change behavior of menubutton with text label
         CKEDITOR.scriptLoader.load( this.path + 'js/override.js' );
-        console.log( 'Loaded override.js' );
+        // console.log( 'Loaded override.js' );
       }
 
       var config = editor.config,
@@ -350,21 +350,17 @@
     /*
     *   getAllowedHeadings: Returns an array of heading tags that represents
     *   the heading levels that are in sequence at the selectedElement point
-    *   in the document, based on the previous and next headings already in
-    *   the document, if they exist.
+    *   in the document. To make this determination, the previous heading
+    *   relative to the selectedElement is utilized, if it exists.
     */
     getAllowedHeadings: function ( editor ) {
       var plugin = this,
           prevHeading = null,
-          nextHeading = null,
-          foundSelectedElement = false,
           selectedElement,
           allowedHeadings,
-          indexPrev,
-          indexNext;
+          indexPrev;
 
       selectedElement = editor.getSelection().getStartElement();
-      console.log('SELECTED ELEMENT: ' + selectedElement.getName() );
 
       /*
       *   getPrevHeading: Recursively traverses elements in document. Each
@@ -398,44 +394,6 @@
       } // end function
 
       /*
-      *   getNextHeading: Recursively traverses elements in document. When
-      *   'selectedElement' is reached, sets var 'foundSelectedElement' in
-      *   outer scope to true and returns false. When 'foundSelectedElement'
-      *   is true AND a heading element is found,  sets var 'nextHeading' in
-      *   outer scope to the heading tag name and returns true. If end of
-      *   document is reached but no nextHeading is found, returns false.
-      *   Bottom line: Go past 'selectedElement', even when it's a heading,
-      *   to find 'nextHeading'.
-      */
-      function getNextHeading ( element ) {
-        var tagName, children, count;
-
-        if ( typeof element.getName !== 'function' )
-          return false;
-
-        if ( element.equals( selectedElement ) ) {
-          foundSelectedElement = true;
-          return false;
-        }
-
-        tagName = element.getName();
-        if ( foundSelectedElement && plugin.isHeadingElement( tagName ) ) {
-          nextHeading = tagName;
-          return true;
-        }
-
-        children = element.getChildren();
-        count = children.count();
-
-        for ( var i = 0; i < count; i++ ) {
-          if ( getNextHeading( children.getItem( i ) ) )
-            return true;
-        }
-        return false;
-
-      } // end function
-
-      /*
       *   h1ElementFound: Returns a boolean value indicating whether there is
       *   an h1 element in the document.
       */
@@ -444,12 +402,9 @@
       }
 
       getPrevHeading( editor.document.getBody() );
-      console.log( 'PREV HEADING: ' + prevHeading );
+      // console.log( 'PREV HEADING: ' + prevHeading );
 
-      getNextHeading( editor.document.getBody() );
-      console.log( 'NEXT HEADING: ' + nextHeading );
-
-      // If there is no previous heading, there are two possible cases:
+      // If there is no previous heading, handle the following situations:
       // (1) If the plugin config specifies that only one h1 is allowed in the
       //     document, and it already has an h1, return an empty array.
       // (2) Otherwise return an array with one element: the highest-level
@@ -465,40 +420,11 @@
       indexPrev = headingTags.indexOf( prevHeading );
 
       if ( indexPrev >= 0 ) {
-        if ( nextHeading === null ) {
-          // We don't have to worry about look-ahead issues...
-          // The allowed headings includes all heading levels higher than
-          // indexPrev, through and including the heading one level lower.
-
-          // Note that if (indexPrev + 2) is greater than the last index
-          // in headingTags, the slice fn. will interpret this to mean that
-          // the endpoint is the last item in the array.
-          allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
-        }
-        else {
-          // There is a next heading, so get its headingTags index
-          indexNext = headingTags.indexOf( nextHeading );
-          if ( indexNext >= 0 ) {
-            // We have both a valid previous and a valid next heading: Handle
-            // the three scenarios for how their indices compare numerically.
-            if ( indexPrev < indexNext ) {
-              // Allow range from indexPrev through indexNext; exclude levels above indexPrev
-              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev ), indexNext + 1 );
-            }
-            if ( indexPrev === indexNext ) {
-              // Allow one level above, same level, or one level below indexPrev
-              allowedHeadings = headingTags.slice( Math.max( startIndex, indexPrev - 1 ), indexPrev + 2 );
-            }
-            if ( indexPrev > indexNext ) {
-              // Allow range from one level above indexNext through one level below indexPrev
-              allowedHeadings = headingTags.slice( Math.max( startIndex, indexNext - 1 ), indexPrev + 2 );
-            }
-          }
-          else {
-            // nextHeading is not in headingTags array: treat as if (nextHeading === null)
-            allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
-          }
-        }
+        // The allowed headings are those with levels higher than, the same
+        // as, or one level lower than indexPrev.
+        // Note on slice function: If the second argument is greater than the
+        // length of the array, it extracts through to the end of the array.
+        allowedHeadings = headingTags.slice( startIndex, indexPrev + 2 );
         return allowedHeadings;
       }
 
