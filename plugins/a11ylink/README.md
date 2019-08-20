@@ -1,22 +1,59 @@
-# a11ylink
+# A11yFirst Link
 
-The `a11ylink` plugin was originally based on the `link` plugin.
-It updates that plugin with the following modifications:
+The A11yFirst Link plugin has all the features of the standard Link plugin,
+but adds additional validation to display text to check for common
+accessibility issues. The A11yFirst Link plugin provides validation feedback
+when the display text is inaccessible (e.g "click here", "more".., a URL).
+URLs are not very descriptive when used as display text, but they are allowed
+through a confirm dialog box warning the user of the accessibility problems of
+using the URL.  This plugin helps authors understand the importance of display
+text describing the target of a link as accurately and succinctly as possible.
 
 ## Features
 
+### Display Text Validation
+
 * Does not allow empty Display Text
-
 * Does not default to using the URL as the Display Text
-
 * Warns when a URL is used as the Display Text
-
 * Detects the use of ‘click here,’ ‘more’ et al.
 
-* Provides a Help button
+### Help
 
-## A11y considerations
+The help command opens the A11yFirst Help plugin option to help authors learn
+more about the accessibility issues related to the display text for links and
+the importance of descriptive display text.
 
-* The display text for a link should describe the target of the link.
+NOTE: The help feature is dependent on the A11yFirst Help plugin being installed.
 
-* URLs are typically not very descriptive when used as display text.
+## Installation
+
+Download the zip file and extract it to your plugins directory.  Add the
+following code to your `config.js` file:
+
+```
+config.extraPlugins =
+     ...
+    'a11ylink,' +
+    ...
+;
+```
+
+'IMPORTANT:' Do not include the standard `link` plugin in the toolbar
+configuration when using the A11yFirst Link plugin.
+
+## Using the A11yFirst Plugins
+The A11yFirst suite of plugins are designed to work together to support
+accessible authoring, and we encourage people to use them in the same toolbar.
+A [recommended toolbar configuration](https://go.illinois.edu/a11yfirst-config)
+is available on the [demonstration page](https://go.illinois.edu/a11yfirst).
+The following table show the suite of A11yFirst plugins and the standard plugins
+they are designed to replace.
+
+| A11yFirst Plugin | Standard Plugin being Replaced    |
+|---  |---  |
+| `a11yheadings`    | `format` |
+| `a11ystylescombo` | `stylescombobox`   |
+| `a11ylink`        | `link`  |
+| `a11yimage`       | `image2` or `image`  |
+| `a11yfirsthelp`   | none |

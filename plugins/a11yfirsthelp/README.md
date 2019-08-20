@@ -2,9 +2,11 @@
 
 ## Overview
 
-This plugin adds a menu button labeled ‘A11yFirst Help’ to the CKEditor toolbar,
-which contains menu items for various help topics, each of which invokes a dialog
-box with content that explains:
+The A11yFirst Help plugin adds a menu button labeled ‘A11yFirst Help’ to the
+CKEditor toolbar to help authors understand the accessibility issues of
+editing pages and how to use of the other A11yFirst plugins:
+Heading / Paragragh, Character Style, Image and Link to create accessible
+content.  The Help contains the following information:
 
 * How to get started using A11yFirst for CKEditor and why accessibility
   is important
@@ -54,6 +56,50 @@ box with content that explains:
 * About links
 * Why links are important
 * More information
+
+### Getting Started
+
+* What is A11yFirst?
+* Commitment to accessibility
+* Document accessibility
+* A different way of thinking
+
+### About A11yFirst
+
+* Project Description & Goals
+* Project Information
+* Contributors
+* Sponsors
+* Acknowledgements
+
+## Installation
+
+Download the zip file and extract it to your plugins directory.
+Add the following code to your `config.js` file:
+
+```
+config.extraPlugins =
+     ...
+    'a11yfirsthelp,' +
+    ...
+;
+```
+
+## Using the A11yFirst Plugins
+The A11yFirst suite of plugins are designed to work together to support
+accessible authoring, and we encourage people to use them in the same toolbar.
+A [recommended toolbar configuration](https://go.illinois.edu/a11yfirst-config)
+is available on the [demonstration page](https://go.illinois.edu/a11yfirst).
+The following table show the suite of A11yFirst plugins and the standard plugins
+they are designed to replace.
+
+| A11yFirst Plugin | Standard Plugin being Replaced    |
+|---  |---  |
+| `a11yheadings`    | `format` |
+| `a11ystylescombo` | `stylescombobox`   |
+| `a11ylink`        | `link`  |
+| `a11yimage`       | `image2` or `image`  |
+| `a11yfirsthelp`   | none |
 
 ## Developer Notes
 
