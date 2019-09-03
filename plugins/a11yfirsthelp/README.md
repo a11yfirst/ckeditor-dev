@@ -1,12 +1,31 @@
-# a11yfirsthelp
+# A11yFirst Help
+
+## Summary
+
+This plugin adds the A11yFirst Help menu button to the editor toolbar, which
+launches a dialog box that provides explanatory text on topics that help
+authors understand the accessibility issues of editing web documents.
+
+It compliments and provides specific information on the use of the full suite
+of A11yFirst plugins: Heading/Paragragh, Character Style, A11yFirst Image and
+A11yFirst Link.
 
 ## Overview
 
-The A11yFirst Help plugin adds a menu button labeled ‘A11yFirst Help’ to the
-CKEditor toolbar to help authors understand the accessibility issues of
-editing pages and how to use of the other A11yFirst plugins:
-Heading / Paragragh, Character Style, Image and Link to create accessible
-content.  The Help contains the following information:
+Each of the A11yFirst plugins embodies a new approach to authoring accessible
+web documents. Rather than relying upon a reactive model that detects problems
+after they exist, the A11yFirst approach is proactive. It enables authors to
+create content that is accessible during the authoring process, by providing
+feedback and validation on a feature-by-feature basis.
+
+For example, once an author becomes familiar with the requirements for, say,
+adding images to documents, it becomes second nature to provide alternative
+text when the image is added, and to consider whether the image needs a longer
+description in the document.
+
+## Features
+
+The A11yFirst Help dialog box contains the following information:
 
 * How to get started using A11yFirst for CKEditor and why accessibility
   is important
@@ -79,13 +98,14 @@ Add the following code to your `config.js` file:
 
 ```
 config.extraPlugins =
-     ...
+    ...
     'a11yfirsthelp,' +
     ...
 ;
 ```
 
 ## Using the A11yFirst Plugins
+
 The A11yFirst suite of plugins are designed to work together to support
 accessible authoring, and we encourage people to use them in the same toolbar.
 A [recommended toolbar configuration](https://go.illinois.edu/a11yfirst-config)
@@ -96,11 +116,12 @@ they are designed to replace.
 | A11yFirst Plugin | Standard Plugin being Replaced    |
 |---  |---  |
 | `a11yheadings`    | `format` |
-| `a11ystylescombo` | `stylescombobox`   |
+| `a11ystylescombo` | `stylescombo`   |
 | `a11ylink`        | `link`  |
 | `a11yimage`       | `image2` or `image`  |
 | `a11yfirsthelp`   | none |
 
+<!--
 ## Developer Notes
 
 ### Adding or Removing Help Topics
@@ -130,3 +151,4 @@ A `showdown` extension is defined in `dialogs/a11yfirst-help.js` that allows
 URLs such as image `src` values to be independent of the editor installation
 path. The extension object is named `basePathExt`, and it is registered with
 `showdown` using the name `basePath`.
+-->

@@ -1,13 +1,30 @@
 # A11yFirst Link
 
+## Summary
+
+This plugin adds the A11yFirst Link button to the editor toolbar. It provides
+authors with features for ensuring that the display text of a link is
+accessible for people with disabilities.
+
+It is a replacement for the standard Link plugin.
+
+## Overview
+
 The A11yFirst Link plugin has all the features of the standard Link plugin,
-but adds additional validation to display text to check for common
-accessibility issues. The A11yFirst Link plugin provides validation feedback
-when the display text is inaccessible (e.g "click here", "more".., a URL).
-URLs are not very descriptive when used as display text, but they are allowed
-through a confirm dialog box warning the user of the accessibility problems of
-using the URL.  This plugin helps authors understand the importance of display
-text describing the target of a link as accurately and succinctly as possible.
+but adds additional validation of the link display text to check for common
+accessibility issues.
+
+For example, the plugin checks for display text that does not describe the
+target of the link, e.g "click here", "more", etc.
+
+It prompts the author when a URL is used as the display text, as they are
+typically not very descriptive of the link target. However, they are allowed
+through a confirm dialog box, which warns the user of the accessibility
+problems of using the URL.
+
+In general, this plugin helps authors understand the importance of display
+text in describing the target of a link as accurately and succinctly as
+possible.
 
 ## Features
 
@@ -33,7 +50,7 @@ following code to your `config.js` file:
 
 ```
 config.extraPlugins =
-     ...
+    ...
     'a11ylink,' +
     ...
 ;
@@ -43,6 +60,7 @@ config.extraPlugins =
 configuration when using the A11yFirst Link plugin.
 
 ## Using the A11yFirst Plugins
+
 The A11yFirst suite of plugins are designed to work together to support
 accessible authoring, and we encourage people to use them in the same toolbar.
 A [recommended toolbar configuration](https://go.illinois.edu/a11yfirst-config)
@@ -53,7 +71,7 @@ they are designed to replace.
 | A11yFirst Plugin | Standard Plugin being Replaced    |
 |---  |---  |
 | `a11yheadings`    | `format` |
-| `a11ystylescombo` | `stylescombobox`   |
+| `a11ystylescombo` | `stylescombo`   |
 | `a11ylink`        | `link`  |
 | `a11yimage`       | `image2` or `image`  |
 | `a11yfirsthelp`   | none |
