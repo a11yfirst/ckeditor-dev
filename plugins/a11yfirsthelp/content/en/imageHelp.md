@@ -70,8 +70,8 @@ document. (This information is appended to the alternative text.)
 
 ### Writing effective alternative text
 
-The following are based on <a href="https://webaim.org">WebAIM</a>'s
-guidelines for alternative text:
+The following are based on <a href="https://webaim.org" target="_resource">
+WebAIM</a>'s guidelines for alternative text:
 
 * **Be accurate and equivalent** in presenting the same *content* and
   *function* of the image.

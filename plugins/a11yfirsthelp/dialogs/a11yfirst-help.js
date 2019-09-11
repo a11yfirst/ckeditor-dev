@@ -133,15 +133,15 @@ CKEDITOR.dialog.add( 'a11yFirstHelpDialog', function( editor ) {
                   this.getElement().focus();
                 },
                 html:
-                  '<div tabindex="-1" class="a11yfirsthelpcontent">\
-                    <div id="contentHeadingHelp"></div>\
-                    <div id="contentListHelp"></div>\
-                    <div id="contentImageHelp"></div>\
-                    <div id="contentInlineStyleHelp"></div>\
-                    <div id="contentLinkHelp"></div>\
-                    <div id="contentGettingStarted"></div>\
-                    <div id="contentAboutA11yFirst"></div>\
-                  </div>'
+                  '<div tabindex="-1" class="a11yfirsthelpcontent">' +
+                    '<div id="contentHeadingHelp"></div>' +
+                    '<div id="contentListHelp"></div>' +
+                    '<div id="contentImageHelp"></div>' +
+                    '<div id="contentInlineStyleHelp"></div>' +
+                    '<div id="contentLinkHelp"></div>' +
+                    '<div id="contentGettingStarted"></div>' +
+                    '<div id="contentAboutA11yFirst"></div>' +
+                  '</div>'
               }
             ]
           }
