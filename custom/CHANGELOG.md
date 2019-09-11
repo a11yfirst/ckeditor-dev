@@ -2,6 +2,24 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.2.2 - 12 Sep 2019
+
+### Updates
+
+* README files
+  * Updated formatting for compatibility with CKEditor Add-ons website
+
+* ZIP files
+  * Updated for submitting plugins to CKEditor Add-ons
+
+* Language files
+  * Removed all line continuation characters
+
+* A11yFirst Help
+  * Updated build system to preprocess the markdown files by enclosing each
+    line in single quotes and using concatenation (+ character) as needed,
+    to avoid the use of line continuation characters.
+
 ## v1.2.1 — 11 Sep 2019
 
 ### Updates

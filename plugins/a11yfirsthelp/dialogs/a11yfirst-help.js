@@ -6,7 +6,7 @@
 CKEDITOR.dialog.add( 'a11yFirstHelpDialog', function( editor ) {
   var lang = editor.lang.a11yfirsthelp,
       config = editor.config,
-      version = '1.2.1',
+      version = '1.2.2',
       dialogObj;
 
   var basePathExt = {

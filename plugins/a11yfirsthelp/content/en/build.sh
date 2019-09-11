@@ -8,7 +8,7 @@
 # 4. Last line: remove plus (concatenation) character at the end of line
 for name in headingHelp listHelp inlineStyleHelp imageHelp linkHelp gettingStarted aboutA11yFirst
 do
-  sed  -e "s/'/\\\'/g" -e "s/^/'/" -e "s/$/\\\n'+/" -e "$ s/+$//" "${name}.md" > "${name}.tmp"
+  sed  -e "s/'/\\\'/g" -e "s/^/'/" -e "s/$/\\\n' +/" -e "$ s/ +$//" "${name}.md" > "${name}.tmp"
 done
 
 # Insert the modified markdown content for each help topic into the language file

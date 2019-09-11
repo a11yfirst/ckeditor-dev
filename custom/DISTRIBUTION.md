@@ -4,10 +4,12 @@
 
 1. Ensure that the `plugins-dev` working copy `a11yfirst-master` branch
    includes all changes needed for the new distribution:
-   * Update the version number in the a11yfirst-help.js file
-   * Update `CHANGELOG.md` by adding a new version description summary
-   * Update `DISTRIBUTION.md` as needed
-   * Update scripts/syncdist.sh file when necessary
+   * Update `version` in the `a11yfirst-help.js` file
+   * Update the ZIP files in the `custom/zip` folder by running:
+     `custom/scripts/zip_plugins.sh`
+   * Update `scripts/syncdist.sh` file when necessary
+   * Update `CHANGELOG.md` by adding the release notes for the new version
+   * Update `DISTRIBUTION.md` (this file) as needed
    * Commit all changes and push to origin
 
 ## CKEditor Builder
