@@ -2,6 +2,22 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.2.1 — 11 Sep 2019
+
+### Updates
+
+* README files
+  * Updated the README file for each plugin for use in submitting the plugins
+    to the CKEditor Add-ons website.
+
+* ZIP files: all five ZIP files were updated to include new README files
+
+* Heading/Paragraph
+  * Experimented with a lookahead feature for taking into account the next
+    heading level. It introduced some complexities that induced us to decide
+    that the algorithm is best left as before, relying only on the previous
+    heading.
+
 ## v1.2.0 — 26 Apr 2019
 
 ### Updates
