@@ -42,18 +42,18 @@ author switches to a different style or a new line is inserted.
 
 The default set of character styles include:
 
-* Strong (`strong`)
-* Emphasis (`em`)
-* Marker (`marker`)
-* Inline quotation (`q`)
-* Cited work (`cite`)
-* Computer code (`code`)
-* Subscript (`sup`)
-* Superscript (`sub`)
-* Deleted Text (`del`)
-* Inserted Text (`ins`)
-* Strikethrough (`strike`)
-* Underline (`u`)
+* Strong (strong)
+* Emphasis (em)
+* Marker (marker)
+* Inline quotation (q)
+* Cited work (cite)
+* Computer code (code)
+* Subscript (sup)
+* Superscript (sub)
+* Deleted Text (del)
+* Inserted Text (ins)
+* Strikethrough (strike)
+* Underline (u)
 
 NOTE: The set of character styles can be customized through configuration
 settings and should only contain inline elements.
@@ -124,10 +124,10 @@ is available on the [demonstration page](https://go.illinois.edu/a11yfirst).
 The following table show the suite of A11yFirst plugins and the standard
 plugins they are designed to replace.
 
-| A11yFirst Plugin | Standard Plugin being Replaced    |
-|---  |---  |
-| `a11yheadings`    | `format` |
-| `a11ystylescombo` | `stylescombo`   |
-| `a11ylink`        | `link`  |
-| `a11yimage`       | `image2` or `image`  |
+| A11yFirst Plugin  | Replaces Standard Plugin |
+|-------------------|--------------------------|
+| `a11yheading`     | `format` |
+| `a11ystylescombo` | `stylescombo` |
+| `a11ylink`        | `link` |
+| `a11yimage`       | `image2` or `image` |
 | `a11yfirsthelp`   | none |

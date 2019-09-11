@@ -68,10 +68,10 @@ is available on the [demonstration page](https://go.illinois.edu/a11yfirst).
 The following table show the suite of A11yFirst plugins and the standard plugins
 they are designed to replace.
 
-| A11yFirst Plugin | Standard Plugin being Replaced    |
-|---  |---  |
-| `a11yheadings`    | `format` |
-| `a11ystylescombo` | `stylescombo`   |
-| `a11ylink`        | `link`  |
-| `a11yimage`       | `image2` or `image`  |
+| A11yFirst Plugin  | Replaces Standard Plugin |
+|-------------------|--------------------------|
+| `a11yheading`     | `format` |
+| `a11ystylescombo` | `stylescombo` |
+| `a11ylink`        | `link` |
+| `a11yimage`       | `image2` or `image` |
 | `a11yfirsthelp`   | none |
