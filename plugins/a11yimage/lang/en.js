@@ -17,14 +17,12 @@ CKEDITOR.plugins.setLang( 'a11yimage', 'en', {
   altTextLabel: 'Alternative text (spoken by screen reader)',
   // Note: The max. length in the following message should match the
   // value of the alternativeTextMaxLength property defined below.
-  altTextTitle: 'A short description of the content and function of the image, \
-no longer than 100 characters',
+  altTextTitle: 'A short description of the content and function of the image, no longer than 100 characters',
   altTextNotRequiredLabel: 'Image does not require alternative text',
 
   // Long description
   longDescLabel: 'Is a long description needed, and if so, where will it be located?',
-  longDescTitle: 'Many people benefit from a detailed description of a \
-complex image, including, but not limited to, people with visual impairments',
+  longDescTitle: 'Many people benefit from a detailed description of a complex image, including, but not limited to, people with visual impairments',
 
   // Long desc. select options
   longDescOptionNo: 'No, the alternative text is adequate',
@@ -56,11 +54,8 @@ complex image, including, but not limited to, people with visual impairments',
   resizer: 'Click and drag to resize',
   title: 'Image Properties',
   uploadTab: 'Upload',
-  helpNotFound: 'The A11yFirst Help system is not installed. Please \
-contact your CMS or CKEditor administrator for more information.',
-  pluginConflict: 'The \'a11yimage\' plugin could not be initialized \
-due to a conflict with one of the following plugins:\n\n%s\n\nPlease \
-contact your CMS or CKEditor administrator for more information.',
+  helpNotFound: 'The A11yFirst Help system is not installed. Please contact your CMS or CKEditor administrator for more information.',
+  pluginConflict: 'The \'a11yimage\' plugin could not be initialized due to a conflict with one of the following plugins:\n\n%s\n\nPlease contact your CMS or CKEditor administrator for more information.',
 
   // Additional properties used in a11yimage
   alignNone: 'None',
@@ -79,15 +74,10 @@ contact your CMS or CKEditor administrator for more information.',
   altEndsWithInvalid: ['bytes'],
 
   msgAltPrefix: 'The alternative text should succinctly describe the content of the image.',
-  msgAltTextNotRequired: 'An image typically requires alternative text (i.e. a short description) \
-for people with visual impairments using screen readers.\n\nAre you sure you want to continue?',
-  msgAltTextWillBeRemoved: 'An image typically requires alternative text (i.e. a short description) \
-for people with visual impairments using screen readers.\n\nThe alternative text you specified \
-will be removed.\n\nAre you sure you want to continue?',
-  msgAltEmpty: 'Please provide alternative text (i.e. a short description of the image) for \
-people with visual impairments using screen readers.',
-  msgAltTooLong: 'The alternative text is %s1 characters, which is longer than the recommended \
-maximum length of %s2 characters.\n\nAre you sure you want to continue?',
+  msgAltTextNotRequired: 'An image typically requires alternative text (i.e. a short description) for people with visual impairments using screen readers.\n\nAre you sure you want to continue?',
+  msgAltTextWillBeRemoved: 'An image typically requires alternative text (i.e. a short description) for people with visual impairments using screen readers.\n\nThe alternative text you specified will be removed.\n\nAre you sure you want to continue?',
+  msgAltEmpty: 'Please provide alternative text (i.e. a short description of the image) for people with visual impairments using screen readers.',
+  msgAltTooLong: 'The alternative text is %s1 characters, which is longer than the recommended maximum length of %s2 characters.\n\nAre you sure you want to continue?',
   msgAltContainsFilename: 'Please remove the filename with the extension "%s" from the alternative text.',
   msgAltIsInvalid: 'Please replace "%s" with alternative text that describes the image.',
   msgAltStartsWithInvalid: 'Please remove the unnecessary phrase "%s" from the alternative text.',
