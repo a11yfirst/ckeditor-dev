@@ -9,7 +9,9 @@ CKEDITOR.plugins.setLang( 'a11yfirsthelp', 'en', {
   versionLabel: 'Version',
 
   a11yFirstHelpLabel: 'A11yFirst Help: Content Accessibility',
-  a11yFirstHelpTitle: 'Information to help authors understand how the A11yFirst features help them make content more accessible to people with disabilites',
+  a11yFirstHelpTitle:
+    'Information to help authors understand how the A11yFirst features help ' +
+    'them make content more accessible to people with disabilites',
 
   headingHelp: {
     menu:  'Heading / Paragraph',

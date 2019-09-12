@@ -26,14 +26,18 @@ understood by all readers.
 
 * Version: %version
 
-* GitHub Repositories: <a href="https://github.com/a11yfirst" target="_resource">https://github.com/a11yfirst</a>
+* GitHub Repositories: <a href="https://github.com/a11yfirst"
+target="_resource">https://github.com/a11yfirst</a>
 
 ### Contributors
 
 * Lucy Chang     (UX, Usability Testing)
-* Jon Gunderson  (Requirements, Development, Usability Testing, Project Management)
-* Nicholas Hoyt  (UX, UI Design, Development, Usability Testing, Project Management)
-* JaEun Jemma Ku (Requirements, Usability Testing, UI Design, Project Management)
+* Jon Gunderson  (Requirements, Development, Usability Testing,
+  Project Management)
+* Nicholas Hoyt  (UX, UI Design, Development, Usability Testing,
+  Project Management)
+* JaEun Jemma Ku (Requirements, Usability Testing, UI Design,
+  Project Management)
 * Eileen Lopez   (UX, Usability Testing)
 * Mark McCarthy  (UX, Usability Testing)
 * Robert Slater  (Requirements)

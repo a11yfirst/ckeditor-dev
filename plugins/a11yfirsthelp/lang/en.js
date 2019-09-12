@@ -9,7 +9,9 @@ CKEDITOR.plugins.setLang( 'a11yfirsthelp', 'en', {
   versionLabel: 'Version',
 
   a11yFirstHelpLabel: 'A11yFirst Help: Content Accessibility',
-  a11yFirstHelpTitle: 'Information to help authors understand how the A11yFirst features help them make content more accessible to people with disabilites',
+  a11yFirstHelpTitle:
+    'Information to help authors understand how the A11yFirst features help ' +
+    'them make content more accessible to people with disabilites',
 
   headingHelp: {
     menu:  'Heading / Paragraph',
@@ -99,7 +101,8 @@ CKEDITOR.plugins.setLang( 'a11yfirsthelp', 'en', {
 '\n' +
 '### Working with lists\n' +
 '\n' +
-'<img style="padding: 8px 0 3px 5px" alt="list toolbar buttons" src="basePath/plugins/a11yfirsthelp/images/list-buttons.png"/>\n' +
+'<img style="padding: 8px 0 3px 5px" alt="list toolbar buttons"\n' +
+'src="basePath/plugins/a11yfirsthelp/images/list-buttons.png"/>\n' +
 '\n' +
 'Use the toolbar buttons shown above to:\n' +
 '\n' +
@@ -255,11 +258,14 @@ CKEDITOR.plugins.setLang( 'a11yfirsthelp', 'en', {
 '\n' +
 '### More information\n' +
 '\n' +
-'* <a href="https://accessibility.psu.edu/images/alttext/" target="_resource">Penn State: Image ALT Text</a>\n' +
+'* <a href="https://accessibility.psu.edu/images/alttext/"\n' +
+'target="_resource">Penn State: Image ALT Text</a>\n' +
 '\n' +
-'* <a href="https://webaim.org/techniques/alttext/" target="_resource">WebAIM: Alternative Text</a>\n' +
+'* <a href="https://webaim.org/techniques/alttext/"\n' +
+'target="_resource">WebAIM: Alternative Text</a>\n' +
 '\n' +
-'* <a href="https://www.w3.org/WAI/tutorials/images/" target="_resource">W3C Web Accessibility Image Tutorial</a>\n' +
+'* <a href="https://www.w3.org/WAI/tutorials/images/"\n' +
+'target="_resource">W3C Web Accessibility Image Tutorial</a>\n' +
 '\n' +
 '* <a href="http://diagramcenter.org/" target="_resource">Diagram Center</a>\n'
   },
@@ -320,49 +326,67 @@ CKEDITOR.plugins.setLang( 'a11yfirsthelp', 'en', {
 '\n' +
 '### Display Text\n' +
 '\n' +
-'Providing accessible *Display Text* is straightforward if you keep the following guidelines in mind:\n' +
+'Providing accessible *Display Text* is straightforward if you keep the\n' +
+'following guidelines in mind:\n' +
 '\n' +
 '1. The *Display Text* for a link should describe the target of the link.\n' +
 '\n' +
 '1. Do not use ambiguous text, such as “Click Here” or “More”.\n' +
 '\n' +
-'1. Do not begin the *Display Text* with redundant words or phrases such as “Link” or “Link to”.\n' +
+'1. Do not begin the *Display Text* with redundant words or phrases such as\n' +
+'   “Link” or “Link to”.\n' +
 '\n' +
-'1. Be consistent: Links to the same URL or e-mail address should have the same *Display Text*.\n' +
+'1. Be consistent: Links to the same URL or e-mail address should have the same\n' +
+'   *Display Text*.\n' +
 '\n' +
-'1. In most cases, it is best not to use the link URL or e-mail address as the *Display Text*.\n' +
+'1. In most cases, it is best not to use the link URL or e-mail address as the\n' +
+'   *Display Text*.\n' +
 '\n' +
 '### About links\n' +
 '\n' +
-'* Screen reader users often use the “List of Links” feature to identify and navigate to links on a page. When links are presented as a list,  using descriptive *Display Text* becomes even more important since understanding the target of each link no longer benefits from its original context within the document.\n' +
+'* Screen reader users often use the “List of Links” feature to identify and\n' +
+'  navigate to links on a page. When links are presented as a list,  using\n' +
+'  descriptive *Display Text* becomes even more important since understanding\n' +
+'  the target of each link no longer benefits from its original context within\n' +
+'  the document.\n' +
 '\n' +
-'* Screen reader users often use the “Search” feature to find links on a page based on keywords they would expect to find in the *Display Text* of the links. Thus the more descriptive the link *Display Text*, the more effective the search feature will be in finding relevant links.\n' +
+'* Screen reader users often use the “Search” feature to find links on a page\n' +
+'  based on keywords they would expect to find in the *Display Text* of the\n' +
+'  links. Thus the more descriptive the link *Display Text*, the more effective\n' +
+'  the search feature will be in finding relevant links.\n' +
 '\n' +
-'* Usable and accessible *Display Text* should be descriptive, unique and start with\n' +
-'keywords (NNG).\n' +
+'* Usable and accessible *Display Text* should be descriptive, unique and start\n' +
+'  with keywords (NNG).\n' +
 '\n' +
 '* The *Display Text* for links is like a sign post. It should tell you what\n' +
-'you’ll find when you follow it (NOMENSA).\n' +
+'  you’ll find when you follow it (NOMENSA).\n' +
 '\n' +
 '### Why links are important\n' +
 '\n' +
 '* Descriptive link text makes it easier for everyone to find and follow links\n' +
-'on a page that are of interest to them.\n' +
+'  on a page that are of interest to them.\n' +
 '\n' +
 '* Descriptive link text is especially important for people using screen\n' +
-'readers, who typically only hear the display text spoken to them through speech\n' +
-'synthesis and do not "see" the link in the context of other content on the page.\n' +
+'  readers, who typically only hear the display text spoken to them through\n' +
+'  speech synthesis and do not "see" the link in the context of other content\n' +
+'  on the page.\n' +
 '\n' +
-'* When URLs, e-mail addresses or other ambiguous text are used as the display text for a link, it is impossible in many cases, and much more difficult in the remaining cases, for\n' +
-'screen reader users to find and follow links of interest to them.\n' +
+'* When URLs, e-mail addresses or other ambiguous text are used as the display\n' +
+'  text for a link, it is impossible in many cases, and much more difficult in\n' +
+'  the remaining cases, for screen reader users to find and follow links of\n' +
+'  interest to them.\n' +
 '\n' +
 '### More information\n' +
 '\n' +
-'* <a href="https://www.nngroup.com/articles/writing-links/" target="_resource">NNG: Writing Hyperlinks: Salient, Descriptive, Start with Keyword</a>\n' +
+'* <a href="https://www.nngroup.com/articles/writing-links/"\n' +
+'target="_resource">NNG: Writing Hyperlinks: Salient, Descriptive, Start with\n' +
+'Keyword</a>\n' +
 '\n' +
-'* <a href="https://www.nomensa.com/blog/2011/writing-good-link-text" target="_resource">Nomensa: How to write good link text</a>\n' +
+'* <a href="https://www.nomensa.com/blog/2011/writing-good-link-text"\n' +
+'target="_resource">Nomensa: How to write good link text</a>\n' +
 '\n' +
-'* <a href="https://accessibility.umn.edu/core-skills/hyperlinks" target="_resource">Accessible U: Hyperlinks (Good and Bad Examples)</a>\n'
+'* <a href="https://accessibility.umn.edu/core-skills/hyperlinks"\n' +
+'target="_resource">Accessible U: Hyperlinks (Good and Bad Examples)</a>\n'
   },
 
   gettingStarted: {
@@ -464,14 +488,18 @@ CKEDITOR.plugins.setLang( 'a11yfirsthelp', 'en', {
 '\n' +
 '* Version: %version\n' +
 '\n' +
-'* GitHub Repositories: <a href="https://github.com/a11yfirst" target="_resource">https://github.com/a11yfirst</a>\n' +
+'* GitHub Repositories: <a href="https://github.com/a11yfirst"\n' +
+'target="_resource">https://github.com/a11yfirst</a>\n' +
 '\n' +
 '### Contributors\n' +
 '\n' +
 '* Lucy Chang     (UX, Usability Testing)\n' +
-'* Jon Gunderson  (Requirements, Development, Usability Testing, Project Management)\n' +
-'* Nicholas Hoyt  (UX, UI Design, Development, Usability Testing, Project Management)\n' +
-'* JaEun Jemma Ku (Requirements, Usability Testing, UI Design, Project Management)\n' +
+'* Jon Gunderson  (Requirements, Development, Usability Testing,\n' +
+'  Project Management)\n' +
+'* Nicholas Hoyt  (UX, UI Design, Development, Usability Testing,\n' +
+'  Project Management)\n' +
+'* JaEun Jemma Ku (Requirements, Usability Testing, UI Design,\n' +
+'  Project Management)\n' +
 '* Eileen Lopez   (UX, Usability Testing)\n' +
 '* Mark McCarthy  (UX, Usability Testing)\n' +
 '* Robert Slater  (Requirements)\n' +
