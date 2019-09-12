@@ -1,8 +1,8 @@
-# A11yFirst Heading/Paragraph
+# A11yFirst Heading / Paragraph
 
 ## Summary
 
-This plugin adds the Heading/Paragraph menu button to the editor toolbar,
+This plugin adds the Heading / Paragraph menu button to the editor toolbar,
 which supports authors in the proper use of headings and other block-level
 paragraph formats within web documents.
 
@@ -24,10 +24,10 @@ same purpose.
 
 ## Features
 
-The Heading/Paragraph plugin supports the proper use of headings via the
+The Heading / Paragraph plugin supports the proper use of headings via the
 following features:
 
-* Headings are made prominent by appearing first in the Heading/Paragraph
+* Headings are made prominent by appearing first in the Heading / Paragraph
   menu.
 * Only heading levels that result in proper nesting are enabled in the menu
   (based on cursor position).
@@ -77,7 +77,7 @@ author, using the same syntax as the CKEditor Format plugin.
 document via the property `allow_only_one_h1` (true or false).
 
 NOTE: To promote the use of headings, the recommended placement of the
-Heading/Paragraph menu button is in the first position of the first row of the
+Heading / Paragraph menu button is in the first position of the first row of the
 editor toolbar.
 
 ### Examples

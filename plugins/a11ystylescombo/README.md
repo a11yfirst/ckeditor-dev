@@ -7,14 +7,14 @@ enables you to add and remove inline character styling to the text content of
 your web document.
 
 This plugin is a replacement for the Styles Combo plugin, and is intended to
-be used in conjunction with the A11yFirst Heading/Paragraph plugin.
+be used in conjunction with the A11yFirst Heading / Paragraph plugin.
 
 ## Overview
 
 How does the visual styling of your document contribute to its accessibility
 for people with disabilities?
 
-The use of this plugin together with the Heading/Paragraph plugin separates
+The use of this plugin together with the Heading / Paragraph plugin separates
 _block_ formats and _inline_ styling into two separate toolbar menus. This
 separation benefits authors by presenting them with two logically distinct
 menus where the actions of each have different implications.
