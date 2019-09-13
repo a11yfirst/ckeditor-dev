@@ -145,14 +145,14 @@ CKEDITOR.editorConfig = function ( config ) {
   ];
 
   config.toolbar = [
-    { name: 'heading',        items: [ 'Heading' ] },
+    { name: 'paragraph',      items: [ 'Heading' ] },
     { name: 'list',           items: [ 'NumberedList', 'BulletedList', 'Indent', 'Outdent' ] },
     { name: 'otherblocks',    items: [ 'Blockquote', 'CodeSnippet' ] },
     { name: 'justify',        items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
     { name: 'misc1',          items: [ 'Image', 'Table' ] },
     { name: 'showblocks',     items: [ 'ShowBlocks' ] },
-    { name: 'a11yfirsthelp',  items: [ 'A11yFirstHelp' ] },
-//  { name: 'source',         items: [ 'Source' ] },
+    { name: 'help',           items: [ 'A11yFirstHelp' ] },
+//  { name: 'mode',           items: [ 'Source' ] },
     '/',
     { name: 'undoredo',       items: [ 'Undo', 'Redo' ] },
     { name: 'clipboard',      items: [ 'Cut', 'Copy', 'Paste', 'PasteFromWord' ] },
