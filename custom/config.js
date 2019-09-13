@@ -68,44 +68,38 @@ CKEDITOR.editorConfig = function ( config ) {
 
   // a11yheading configuration
   config.allow_only_one_h1 = true;
-  config.format_tags = 'h1;h2;h3;h4;h5;h6;p;pre;address';
+  config.format_tags = 'h1;h2;h3;h4;p;pre;address';
 
   config.plugins =
+    'a11ychecker,' +
+    'a11yfirsthelp,' +
+    'a11yheading,' +
     'a11yhelp,' +
+    'a11yimage,' +
+    'a11ylink,' +
+    'a11ystylescombo,' +
     'about,' +
     'balloonpanel,' +
     'basicstyles,' +
     'blockquote,' +
-    'button,' +
     'clipboard,' +
     'codesnippet,' +
     'contextmenu,' +
-    'dialog,' +
-    'dialogui,' +
     'elementspath,' +
     'enterkey,' +
     'entities,' +
-    'fakeobjects,' +
     'find,' +
-    'floatpanel,' +
     'htmlwriter,' +
-    'indent,' +
     'indentlist,' +
     'justify,' +
     'language,' +
     'list,' +
-    'listblock,' +
     'liststyle,' +
     'magicline,' +
-    'menu,' +
-    'menubutton,' +
-    'notification,' +
-    'panel,' +
     'pastefromword,' +
     'pastetext,' +
     'removeformat,' +
     'resize,' +
-    'richcombo,' +
     'showblocks,' +
     'showborders,' +
     'sourcearea,' +
@@ -117,14 +111,6 @@ CKEDITOR.editorConfig = function ( config ) {
     'toolbar,' +
     'undo,' +
     'wysiwygarea';
-
-  config.extraPlugins =
-    'a11ychecker,' +
-    'a11yfirsthelp,' +
-    'a11yheading,' +
-    'a11yimage,' +
-    'a11ylink,' +
-    'a11ystylescombo';
 
   config.language_list = [
     'ar:Arabic:rtl',
@@ -192,7 +178,5 @@ CKEDITOR.stylesSet.add ( 'default', [
   { name: 'Subscript',        element: 'sub' },
   { name: 'Superscript',      element: 'sup' },
   { name: 'Deleted Text',     element: 'del' },
-  { name: 'Inserted Text',    element: 'ins' },
-  { name: 'Strikethrough',    element: 'strike' },
-  { name: 'Underline',        element: 'u' }
+  { name: 'Inserted Text',    element: 'ins' }
 ] );
