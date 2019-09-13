@@ -66,7 +66,6 @@ CKEDITOR.plugins.setLang( 'a11ylink', 'en', {
   toAnchor: 'Link to anchor in the text',
   toEmail: 'E-mail',
   toUrl: 'URL',
-  toolbar: 'Link',
   type: 'Link Type',
   unlink: 'Unlink',
   upload: 'Upload',
@@ -88,5 +87,6 @@ CKEDITOR.plugins.setLang( 'a11ylink', 'en', {
   msgEmptyDisplayText: 'Please type the display text for the link',
   msgNoAnchors: 'No anchors available in the document. The link will be inserted, but will not link to an anchor.',
   msgNoAnchorSelected: 'The link is not associated with an anchor. Do you want to continue?',
-  msgNameEqualToDisplayText: 'For accessibility reasons, in many cases the anchor name or ID may not be a good choice as the display text for the link. Are you sure you want to continue?'
+  msgNameEqualToDisplayText: 'For accessibility reasons, in many cases the anchor name or ID may not be a good choice as the display text for the link. Are you sure you want to continue?',
+  tooltip: 'A11yFirst Link'
 } );

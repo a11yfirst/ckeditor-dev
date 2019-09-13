@@ -106,7 +106,7 @@
 
       if ( editor.ui.addButton ) {
         editor.ui.addButton( 'Link', {
-          label: editor.lang.a11ylink.toolbar,
+          label: editor.lang.a11ylink.tooltip,
           command: 'a11ylink',
           toolbar: 'links,10'
         } );

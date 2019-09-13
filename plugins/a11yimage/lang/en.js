@@ -9,6 +9,7 @@
 */
 
 CKEDITOR.plugins.setLang( 'a11yimage', 'en', {
+  tooltip: 'A11yFirst Image',
 
   // URL
   urlTitle: 'URL of the image source file',

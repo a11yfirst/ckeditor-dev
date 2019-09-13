@@ -123,7 +123,7 @@
 
       // Add toolbar button for this plugin.
       editor.ui.addButton && editor.ui.addButton( 'Image', {
-        label: editor.lang.common.image,
+        label: editor.lang.a11yimage.tooltip,
         command: 'image',
         toolbar: 'insert,10'
       } );
