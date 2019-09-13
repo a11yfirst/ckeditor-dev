@@ -68,7 +68,7 @@ CKEDITOR.plugins.add( 'a11yfirsthelp', {
     editor.ui.addRichCombo( 'A11yFirstHelp', {
       label: lang.label,
       title: lang.panelTitle,
-      toolbar: 'a11yfirsthelp',
+      toolbar: 'mode,100',
       command: 'allyfirsthelp',
       allowedContent: allowedContent,
 

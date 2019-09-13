@@ -228,7 +228,7 @@
         label: lang.label,
         title: lang.panelTitle,
         allowedContent: allowedContent,
-        toolbar: 'heading',
+        toolbar: 'paragraph,1',
         command: 'heading',
         onMenu: function() {
           var activeItems = {},
