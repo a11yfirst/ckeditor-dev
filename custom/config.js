@@ -1,65 +1,9 @@
-/**
-* Copyright (c) 2018 University of Illinois - Jon Gunderson and Nicholas Hoyt. All rights reserved.
-* For licensing, see LICENSE.md or http://ckeditor.com/license
-*
-* DISTRIBUTION BUILD INSTRUCTIONS: Updated for v0.8.0
-*
-* To use the CKEditor Builder tool, start by selecting the Standard preset.
-* Then add and remove plugins as specified in the three steps listed below.
-*
-* Note: When filebrowser, format, link and stylescombo are removed, their
-* dependencies (popup, listblock, fakeobjects and richcombo) are also removed.
-*
-* 1. Add the following 7 plugins:
-*
-*    Balloon Panel          (balloonpanel)
-*    Code Snippet           (codesnippet)
-*    Find / Replace         (find)
-*    Justify                (justify)
-*    Language               (language)
-*    List Style             (liststyle)
-*    Show Blocks            (showblocks)
-*
-* 2. Remove the following 11 plugins:
-*
-*    File Browser           (filebrowser)
-*    Floating Space         (floatingspace)
-*    Format                 (format)
-*    Horizontal Rule        (horizontalrule)
-*    Image                  (image)
-*    Link                   (link)
-*    Maximize               (maximize)
-*    SpellCheckAsYouType    (scayt)
-*    Styles Combo           (stylescombo)
-*    Upload Image           (uploadimage)
-*    WebSpellChecker        (wsc)
-*
-* 3. Add the 3 a11yfirst plugin dependencies that were removed when the
-*    Standard preset plugins format, link and stylescombo were removed:
-*
-*    Fake Objects           (fakeobjects)
-*    List Block             (listblock)
-*    Rich Combo             (richcombo)
-*
-* Note: To determine which plugins to include in our distribution, an analysis
-* of the differences between the Basic and Standard presets was performed. The
-* following are the additional plugins provided by Standard over Basic, with
-* comments specifying whether to include each:
-*
-*    elementspath     // yes
-*    filebrowser      // no
-*    horizontalrule   // no
-*    htmlwriter       // yes
-*    magicline        // yes
-*    maximize         // no
-*    popup            // no
-*    resize           // yes
-*    showborders      // yes
-*    sourcearea       // yes
-*    tab              // yes
-*    tableselection   // yes
-*    tabletools       // yes
+/*
+* Copyright (c) 2016–2019 University of Illinois - Jon Gunderson and Nicholas Hoyt.
+* All rights reserved. For licensing, see LICENSE.md or http://ckeditor.com/license
 */
+
+// Recommended A11yFirst Configuration Options
 
 CKEDITOR.editorConfig = function ( config ) {
   config.height = 480;
@@ -144,6 +88,7 @@ CKEDITOR.editorConfig = function ( config ) {
     'yi:Yiddish'
   ];
 
+  // a11yfirst toolbar configuration
   config.toolbar = [
     { name: 'paragraph',      items: [ 'Heading' ] },
     { name: 'list',           items: [ 'NumberedList', 'BulletedList', 'Indent', 'Outdent' ] },

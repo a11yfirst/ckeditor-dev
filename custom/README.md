@@ -1,64 +1,70 @@
-# A11yFirst for CKEditor
+# Distribution Build Instructions
 
-## What is it?
+To use the CKEditor Builder tool, start by selecting the **Standard** preset.
+Then add and remove plugins as specified in the three steps listed below.
 
-The A11yFirst Project is a set of accessibility enhancements to CKEditor 4
-that promote and encourage the creation of accessible content as you edit.
+**Note #1:** When `filebrowser`, `format`, `link` and `stylescombo` are
+removed, their dependencies (`popup`, `listblock`, `fakeobjects` and
+`richcombo`) are also removed. Three of these (`fakeobjects`, `listblock`
+and `richcombo`) are dependencies for the A11yFirst plugins; hence the need
+for Step #3.
 
-It does this via a suggested reorganization of the editor toolbar, and by
-adding plugins with auto-detected constraints and validation that enable
-authors to better understand accessibility on a feature-by-feature basis.
+**Note #2:** A11yFirst has created its own modified version of Accessibiity
+Checker, and our `syncdist.sh` script handles adding its files to our
+distribution. But when using CKBuilder to build the foundation for our
+distribution, we need to add its dependency, namely the `balloonpanel` plugin.
 
-### Reorganizes the editor toolbar
+## Step #1: Add the following 7 plugins
 
-* Promotes the use of block elements for their structural semantics
+1. Balloon Panel          (`balloonpanel`)
+1. Code Snippet           (`codesnippet`)
+1. Find / Replace         (`find`)
+1. Justify                (`justify`)
+1. Language               (`language`)
+1. List Style             (`liststyle`)
+1. Show Blocks            (`showblocks`)
 
-* Discourages the use of stylistic features for purely visual effects
+## Step #2: Remove the following 11 plugins
 
-* Omits choices that are best made in CMS templates such as font size,
-  font face and font color
+1. File Browser           (`filebrowser`)
+1. Floating Space         (`floatingspace`)
+1. Format                 (`format`)
+1. Horizontal Rule        (`horizontalrule`)
+1. Image                  (`image`)
+1. Link                   (`link`)
+1. Maximize               (`maximize`)
+1. SpellCheckAsYouType    (`scayt`)
+1. Styles Combo           (`stylescombo`)
+1. Upload Image           (`uploadimage`)
+1. WebSpellChecker        (`wsc`)
 
-### Adds new features via plugins
+## Step #3: Add the 3 a11yfirst plugin dependencies
 
-* Heading / Paragraph (a11yheading)
+These were removed when the Standard preset plugins `format`, `link` and
+`stylescombo` were removed.
 
-  * Only headings that are in sequence are enabled
+1. Fake Objects           (`fakeobjects`)
+1. List Block             (`listblock`)
+1. Rich Combo             (`richcombo`)
 
-  * Heading menu item labels indicate purpose
+**Note #3:** To determine which plugins to include in our distribution, an
+analysis of the differences between the Basic and Standard presets was
+performed. The following are the additional plugins provided by Standard, our
+chosen starting point, with comments indicating whether to include it in the
+A11yFirst distribution.
 
-* Image (a11yimage)
-
-  * Prompts for Alternative Text
-
-  * Warns when Alt. Text is more than 100 char. in length
-
-  * Detects Alt. Text words and phrases such as ‘image of,’ ‘photo of’ et al.
-
-  * Asks whether a Long Description is needed, and if so, where it will be
-    located in the document
-
-* Link (a11ylink)
-
-  * Does not allow empty Display Text
-
-  * Warns when a URL is used as the Display Text
-
-  * Detects the use of ‘click here,’ ‘more’ et al.
-
-* Character Style (a11ystylescombo)
-
-  * Eliminates block styles
-
-* A11yFirst Help (a11yfirsthelp)
-
-  * Getting Started
-
-  * Heading / Paragraph
-
-  * List
-
-  * Image
-
-  * Character Style
-
-  * Link
+| Standard Plugin  | Include |
+|------------------|---------|
+| `elementspath`   | yes |
+| `filebrowser`    | no  |
+| `horizontalrule` | no  |
+| `htmlwriter`     | yes |
+| `magicline`      | yes |
+| `maximize`       | no  |
+| `popup`          | no  |
+| `resize`         | yes |
+| `showborders`    | yes |
+| `sourcearea`     | yes |
+| `tab`            | yes |
+| `tableselection` | yes |
+| `tabletools`     | yes |
