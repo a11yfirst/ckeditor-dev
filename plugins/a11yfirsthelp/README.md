@@ -35,7 +35,7 @@ The A11yFirst Help dialog box contains the following information:
 
 * The purpose of, and contributors to, the A11yFirst Project
 
-## Help Topics & Subtopics
+In particular, it includes the following topics and subtopics:
 
 ### Heading / Paragraph
 
@@ -93,33 +93,20 @@ The A11yFirst Help dialog box contains the following information:
 
 ## Installation
 
-Download the zip file and extract it to your plugins directory.
-Add the following code to your `config.js` file:
+Please refer to the following pages in the
+[A11yFirst Documentation wiki](https://github.com/a11yfirst/documentation/wiki):
 
-```
-config.extraPlugins =
-    ...
-    'a11yfirsthelp,' +
-    ...
-;
-```
+* [Installing A11yFirst Plugins](https://github.com/a11yfirst/documentation/wiki/Installing-A11yFirst-Plugins)
+* [Using CKBuilder](https://github.com/a11yfirst/documentation/wiki/Using-CKBuilder)
 
-## Using the A11yFirst Plugins
+## Configuration and Usage
 
-The A11yFirst suite of plugins are designed to work together to support
-accessible authoring, and we encourage people to use them in the same toolbar.
-A [recommended toolbar configuration](https://go.illinois.edu/a11yfirst-config)
-is available on the [demonstration page](https://go.illinois.edu/a11yfirst).
-The following table show the suite of A11yFirst plugins and the standard plugins
-they are designed to replace.
+Please refer to the following pages in the
+[A11yFirst Documentation wiki](https://github.com/a11yfirst/documentation/wiki):
 
-| A11yFirst Plugin  | Replaces Standard Plugin |
-|-------------------|--------------------------|
-| `a11yheading`     | `format` |
-| `a11ystylescombo` | `stylescombo` |
-| `a11ylink`        | `link` |
-| `a11yimage`       | `image2` or `image` |
-| `a11yfirsthelp`   | none |
+* [Editor Configuration](https://github.com/a11yfirst/documentation/wiki/Editor-Configuration),
+  which includes the recommended A11yFirst toolbar layout
+* [Features Overview](https://github.com/a11yfirst/documentation/wiki/Features-Overview)
 
 <!--
 ## Developer Notes

@@ -47,11 +47,11 @@ These were removed when the Standard preset plugins `format`, `link` and
 1. List Block             (`listblock`)
 1. Rich Combo             (`richcombo`)
 
-**Note #3:** To determine which plugins to include in our distribution, an
-analysis of the differences between the Basic and Standard presets was
-performed. The following are the additional plugins provided by Standard, our
-chosen starting point, with comments indicating whether to include it in the
-A11yFirst distribution.
+**Historical Note:** To determine which plugins to include in our
+distribution, an analysis of the differences between the Basic and Standard
+presets was performed. The following are the additional plugins provided by
+Standard, our chosen starting point, with comments indicating whether to
+include it in the A11yFirst distribution.
 
 | Standard Plugin  | Include |
 |------------------|---------|

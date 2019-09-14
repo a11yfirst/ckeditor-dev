@@ -48,12 +48,10 @@ The default set of character styles include:
 * Inline quotation (q)
 * Cited work (cite)
 * Computer code (code)
-* Subscript (sup)
-* Superscript (sub)
+* Subscript (sub)
+* Superscript (sup)
 * Deleted Text (del)
 * Inserted Text (ins)
-* Strikethrough (strike)
-* Underline (u)
 
 NOTE: The set of character styles can be customized through configuration
 settings and should only contain inline elements.
@@ -75,59 +73,17 @@ installed.
 
 ## Installation
 
-Download the zip file and extract it to your plugins directory.  Add the
-following code to your `config.js` file:
+Please refer to the following pages in the
+[A11yFirst Documentation wiki](https://github.com/a11yfirst/documentation/wiki):
 
-```
-config.extraPlugins =
-    ...
-    'a11ystylescombo,' +
-    ...
-;
-```
+* [Installing A11yFirst Plugins](https://github.com/a11yfirst/documentation/wiki/Installing-A11yFirst-Plugins)
+* [Using CKBuilder](https://github.com/a11yfirst/documentation/wiki/Using-CKBuilder)
 
-'IMPORTANT:' Do not include the standard Styles plugin in the toolbar
-configuration when using the A11yFirst Character Style plugin.
+## Configuration and Usage
 
-## Configuration
+Please refer to the following pages in the
+[A11yFirst Documentation wiki](https://github.com/a11yfirst/documentation/wiki):
 
-There is a `stylesSet.add` function that can be used in the `config.js` file
-to define the set of inline styles available in the Character Style menu.
-
-The following is the default list of styles; you may wish to remove some of
-them based your installation needs.
-
-```
-// a11ystylescombo configuration
-CKEDITOR.stylesSet.add ( 'default', [
-  { name: 'Strong',           element: 'strong', overrides: 'b' },
-  { name: 'Emphasis',         element: 'em' , overrides: 'i' },
-  { name: 'Marker',           element: 'span', attributes: { 'class': 'marker' } },
-  { name: 'Inline quotation', element: 'q' },
-  { name: 'Cited work',       element: 'cite' },
-  { name: 'Computer code',    element: 'code' },
-  { name: 'Subscript',        element: 'sub' },
-  { name: 'Superscript',      element: 'sup' },
-  { name: 'Deleted Text',     element: 'del' },
-  { name: 'Inserted Text',    element: 'ins' },
-  { name: 'Strikethrough',    element: 'strike' },
-  { name: 'Underline',        element: 'u' }
-] );
-```
-
-## Using the A11yFirst Plugins
-
-The A11yFirst suite of plugins are designed to work together to support
-accessible authoring, and we encourage people to use them in the same toolbar.
-A [recommended toolbar configuration](https://go.illinois.edu/a11yfirst-config)
-is available on the [demonstration page](https://go.illinois.edu/a11yfirst).
-The following table show the suite of A11yFirst plugins and the standard
-plugins they are designed to replace.
-
-| A11yFirst Plugin  | Replaces Standard Plugin |
-|-------------------|--------------------------|
-| `a11yheading`     | `format` |
-| `a11ystylescombo` | `stylescombo` |
-| `a11ylink`        | `link` |
-| `a11yimage`       | `image2` or `image` |
-| `a11yfirsthelp`   | none |
+* [Editor Configuration](https://github.com/a11yfirst/documentation/wiki/Editor-Configuration),
+  which includes the recommended A11yFirst toolbar layout
+* [Features Overview](https://github.com/a11yfirst/documentation/wiki/Features-Overview)
