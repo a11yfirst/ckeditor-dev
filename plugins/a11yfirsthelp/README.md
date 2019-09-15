@@ -97,15 +97,14 @@ Please refer to the following pages in the
 [A11yFirst Documentation wiki](https://github.com/a11yfirst/documentation/wiki):
 
 * [Installing A11yFirst Plugins](https://github.com/a11yfirst/documentation/wiki/Installing-A11yFirst-Plugins)
-* [Using CKBuilder](https://github.com/a11yfirst/documentation/wiki/Using-CKBuilder)
+* [Using CKEditor Builder](https://github.com/a11yfirst/documentation/wiki/Using-CKEditor-Builder)
 
 ## Configuration and Usage
 
 Please refer to the following pages in the
 [A11yFirst Documentation wiki](https://github.com/a11yfirst/documentation/wiki):
 
-* [Editor Configuration](https://github.com/a11yfirst/documentation/wiki/Editor-Configuration),
-  which includes the recommended A11yFirst toolbar layout
+* [Configuring CKEditor](https://github.com/a11yfirst/documentation/wiki/Configuring-CKEditor)
 * [Features Overview](https://github.com/a11yfirst/documentation/wiki/Features-Overview)
 
 <!--
