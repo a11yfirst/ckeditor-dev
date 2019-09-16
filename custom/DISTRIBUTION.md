@@ -15,7 +15,7 @@
 ## CKEditor Builder
 
 1. Use the [CKEditor Builder](https://ckeditor.com/cke4/builder) app to create
-   a new build, following the instructions in `config.js`.
+   a new build, following the instructions in `custom/BUILDER.md`.
 
    * Note: If nothing has changed with the build process since the last
      distribution, you can upload the `build-config.js` from the previous
