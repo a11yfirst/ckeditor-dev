@@ -7,7 +7,7 @@ launches a dialog box that provides explanatory text on topics that help
 authors understand the accessibility issues of editing web documents.
 
 It compliments and provides specific information on the use of the full suite
-of A11yFirst plugins: Heading / Paragragh, Character Style, A11yFirst Image
+of A11yFirst plugins: Heading / Paragraph, Character Style, A11yFirst Image
 and A11yFirst Link.
 
 ## Overview
