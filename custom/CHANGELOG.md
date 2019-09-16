@@ -2,6 +2,45 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.2.3 — 16 Sep 2019
+
+### Updates
+
+* Toolbar button tooltips
+  * Added 'A11yFirst' prefix to 'Image' and 'Link' tooltips to differentiate
+    them from standard plugins.
+
+* Changed default toolbar groups to existing groups that are used by Builder,
+  to fix problem with two plugins not showing up in default toolbar:
+  * 'Heading' button default group is 'paragraph'
+  * 'A11yFirstHelp' button default group is 'mode'
+
+* Character Styles plugin
+  * Updated list of default styles by removing 'u' and 'strike', which seem
+    redundant when 'ins' and 'del' are also in the list.
+
+* A11yFirst Link plugin
+  * Updated styling of 'Help' button to match A11yFirst Image
+
+* Created [A11yFirst Documentation Wiki](https://github.com/a11yfirst/documentation/wiki)
+  website that includes the following four pages:
+  * [Configuring CKEditor](https://github.com/a11yfirst/documentation/wiki/Configuring-CKEditor)
+  * [Features Overview](https://github.com/a11yfirst/documentation/wiki/Features-Overview) (same as 'custom/README.md')
+  * [Installing A11yFirst Plugins](https://github.com/a11yfirst/documentation/wiki/Installing-A11yFirst-Plugins)
+  * [Using CKEditor Builder](https://github.com/a11yfirst/documentation/wiki/Using-CKEditor-Builder)
+
+* Plugin README files
+  * Refactored the 'Installation' and 'Configuration and Usage' sections to
+    point to the corresponding A11yFirst Documentation wiki pages.
+
+* Updated 'custom/config.js'
+  * Moved A11yFirst plugins into 'config.plugins' list and deleted the
+    'config.extraPlugins' property.
+  * Removed 12 standard plugins from 'config.plugins', which are dependencies
+    for other plugins automatically resolved by CKEditor Builder.
+
+* Moved Builder information from 'custom/config.js' to 'custom/BUILDER.md'
+
 ## v1.2.2 — 12 Sep 2019
 
 ### Updates

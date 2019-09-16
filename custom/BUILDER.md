@@ -57,6 +57,31 @@ Standard preset plugins `format`, `link` and `stylescombo` were removed.
 
 ## Notes
 
+The following 12 plugins were removed from the `config.plugins` list in
+`config.js`, as they are dependencies for other standard plugins that are
+automatically resolved by the CKEditor Builder tool.
+
+Note that three of these, `fakeobjects`, `listblock` and `richcombo` must be
+added to the build produced by Builder when the A11yFirst plugins are not
+not included in the build.
+
+```
+button
+dialog
+dialogui
+fakeobjects
+floatpanel
+indent
+listblock
+menu
+menubutton
+notification
+panel
+richcombo
+```
+
+
+
 **Historical Note:** To determine which plugins to include in our
 distribution, an analysis of the differences between the Basic and Standard
 presets was performed. The following are the additional plugins provided by
