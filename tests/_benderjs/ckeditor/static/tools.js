@@ -60,6 +60,46 @@
 
 	bender.tools = {
 		/**
+		 * Ignores test case when the given plugin is not supported on the testing
+		 * environment. Uses {@link CKEDITOR.pluginDefinition#isSupportedEnvironment} to
+		 * verify if plugin is supported.
+		 *
+		 * Works for both manual and unit tests.
+		 *
+		 * @param pluginName pluginName Plugin name to check.
+		 * @param CKEDITOR.editor [editor] Editor instance passsed as an argument
+		 * to the {@link CKEDITOR.pluginDefinition#isSupportedEnvironment} method.
+		 */
+		ignoreUnsupportedEnvironment: function( pluginName, editor ) {
+			if ( editor ) {
+				if ( editor.status === 'ready' ) {
+					ignoreUnsupportedEnvironment();
+				} else {
+					editor.once( 'instanceReady', ignoreUnsupportedEnvironment );
+				}
+				return;
+			}
+
+			if ( CKEDITOR.plugins.registered[ pluginName ] ) {
+				ignoreUnsupportedEnvironment();
+			} else {
+				CKEDITOR.once( pluginName + 'PluginReady', ignoreUnsupportedEnvironment );
+			}
+
+			function ignoreUnsupportedEnvironment() {
+				var plugin = editor ? editor.plugins[ pluginName ] : CKEDITOR.plugins.registered[ pluginName ];
+
+				if ( !plugin.isSupportedEnvironment( editor ) ) {
+					if ( bender.testData.manual ) {
+						bender.ignore();
+					} else {
+						assert.ignore();
+					}
+				}
+			}
+		},
+
+		/**
 		 * Creates an array from an object.
 		 *
 		 * @param  {Object} obj
@@ -67,7 +107,7 @@
 		 */
 		objToArray: function( obj ) {
 			var tools = CKEDITOR.tools;
-			return tools.array.map( tools.objectKeys( obj ), function( key ) {
+			return tools.array.map( tools.object.keys( obj ), function( key ) {
 				return obj[ key ];
 			} );
 		},
@@ -1204,6 +1244,42 @@
 			} else {
 				element[ eventName ]( evt );
 			}
+		},
+
+		/**
+		 * Creates test suite object for `bender.test` method from synchronous and asynchronous test cases.
+		 * Asynchronous test must be a function which returns a promise and cannot poses wait-resume statements.
+		 *
+		 * Please notice that currently this method doesn't support special test methods (`setUp`, `tearDown`, etc.),
+		 * which might be passed to the `bender.test` function.
+		 *
+		 * @param {Object} tests object
+		 */
+		createAsyncTests: function( tests ) {
+			var tmp = {};
+
+			for ( var testName in tests ) {
+				tmp[ testName ] = ( function( test ) {
+					return function() {
+						var promise = test.apply( this );
+
+						if ( promise ) {
+							promise.then( function() {
+									resume();
+								} )
+								[ 'catch' ]( function( err ) {
+									resume( function() {
+										throw err;
+									} );
+								} );
+
+							wait();
+						}
+					};
+				} )( tests[ testName ] );
+			}
+
+			return tmp;
 		}
 
 	};

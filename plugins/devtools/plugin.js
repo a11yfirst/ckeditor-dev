@@ -4,7 +4,7 @@
  */
 
 CKEDITOR.plugins.add( 'devtools', {
-	lang: 'ar,az,bg,ca,cs,cy,da,de,de-ch,el,en,en-au,en-gb,eo,es,es-mx,et,eu,fa,fi,fr,fr-ca,gl,gu,he,hr,hu,id,it,ja,km,ko,ku,lt,lv,nb,nl,no,oc,pl,pt,pt-br,ro,ru,si,sk,sl,sq,sv,tr,tt,ug,uk,vi,zh,zh-cn', // %REMOVE_LINE_CORE%
+	lang: 'ar,az,bg,ca,cs,cy,da,de,de-ch,el,en,en-au,en-gb,eo,es,es-mx,et,eu,fa,fi,fr,fr-ca,gl,gu,he,hr,hu,id,it,ja,km,ko,ku,lt,lv,nb,nl,no,oc,pl,pt,pt-br,ro,ru,si,sk,sl,sq,sr,sr-latn,sv,tr,tt,ug,uk,vi,zh,zh-cn', // %REMOVE_LINE_CORE%
 
 	init: function( editor ) {
 		editor._.showDialogDefinitionTooltips = 1;
@@ -114,7 +114,7 @@ CKEDITOR.plugins.add( 'devtools', {
  * A function that returns the text to be displayed inside the Developer Tools
  * tooltip when hovering over a dialog UI element.
  *
- * Read more in the {@glink guide/dev_devtools documentation}
+ * Read more in the {@glink features/devtools documentation}
  * and see the {@glink examples/devtools example}.
  *
  *		// This is actually the default value.
@@ -138,7 +138,7 @@ CKEDITOR.plugins.add( 'devtools', {
  *			return str + '</ul>';
  *		};
  *
- * @since 3.6
+ * @since 3.6.0
  * @cfg {Function} [devtools_textCallback=see example]
  * @member CKEDITOR.config
  * @param {CKEDITOR.editor} editor
@@ -150,7 +150,7 @@ CKEDITOR.plugins.add( 'devtools', {
 /**
  * A setting that stores CSS rules to be injected into the page with styles to be applied to the tooltip element.
  *
- * Read more in the {@glink guide/dev_devtools documentation}
+ * Read more in the {@glink features/devtools documentation}
  * and see the {@glink examples/devtools example}.
  *
  *		// This is actually the default value.
@@ -159,7 +159,7 @@ CKEDITOR.plugins.add( 'devtools', {
  *			'#cke_tooltip h2 { font-size: 1.1em; border-bottom: 1px solid; margin: 0; padding: 1px; }' +
  *			'#cke_tooltip ul { padding: 0pt; list-style-type: none; }';
  *
- * @since 3.6
+ * @since 3.6.0
  * @cfg {String} [devtools_styles=see example]
  * @member CKEDITOR.config
  */
