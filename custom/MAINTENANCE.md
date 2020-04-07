@@ -7,19 +7,25 @@ to the CKEditor 4 development repository, located at
 [https://github.com/ckeditor/ckeditor4](https://github.com/ckeditor/ckeditor4),
 into the A11yFirst plugins development repository.
 
-In particular, we want to first merge all commits made to the `major` branch
-in the upstream repository into our development repository's `master` branch,
-and then from our `master` branch into our `a11yfirst-master` branch.
-
-Once the upstream commits have been merged into `a11yfirst-master`, we then
-need to test all of our plugins to ensure that none of the changes/commits
-have had any undesirable effects on our code.
+Following these procedures allows us to “stay in sync” with the major/minor
+releases (4.x) branch of CKEditor 4, which will potentially introduce new
+features and bug fixes to A11yFirst as they are added to CKEditor 4.
 
 While there may be various reasons for creating maintenance releases of
 A11yFirst, they are especially important when security updates are made to
 CKEditor 4.
 
-## Procedure
+## Procedures
+
+In particular, we want to first merge all commits made to the `major` branch
+in the upstream repository into our development repository's `master` branch,
+and then merge our `master` branch into our `a11yfirst-master` branch.
+
+Once the upstream commits have been merged into `a11yfirst-master`, we then
+need to test all of our plugins to ensure that none of the changes/commits
+have had any undesirable effects on our code.
+
+### Initialization
 
 1. Make sure the `plugins-dev` working copy is up to date:
 
