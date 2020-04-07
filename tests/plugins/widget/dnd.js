@@ -1,6 +1,6 @@
 /* bender-tags: widgetcore */
 /* bender-ckeditor-plugins: widget,undo,clipboard */
-/* bender-ckeditor-remove-plugins: tableselection */
+/* bender-ckeditor-remove-plugins: tableselection,pastefromlibreoffice */
 /* bender-include: _helpers/tools.js */
 /* global widgetTestsTools, lineutilsTestsTools */
 
@@ -12,11 +12,13 @@
 			allowedContent: true,
 			on: {
 				instanceReady: function( evt ) {
-					evt.editor.dataProcessor.writer.sortAttributes = 1;
+					var editor = evt.editor;
 
-					evt.editor.widgets.add( 'testwidget', {} );
+					editor.dataProcessor.writer.sortAttributes = 1;
 
-					evt.editor.widgets.add( 'testwidget2', {
+					editor.widgets.add( 'testwidget', {} );
+
+					editor.widgets.add( 'testwidget2', {
 						editables: {
 							n1: {
 								selector: '.n1',
@@ -29,13 +31,19 @@
 						}
 					} );
 
-					evt.editor.widgets.add( 'testwidget3', {
+					editor.widgets.add( 'testwidget3', {
 						requiredContent: 'blockquote(testwidget3)'
 					} );
 
-					evt.editor.widgets.add( 'testwidget4', {
+					editor.widgets.add( 'testwidget4', {
 						editables: {
 							n1: '.n1'
+						}
+					} );
+
+					editor.widgets.add( 'testwidget5', {
+						getClipboardHtml: function() {
+							return '<p>foobar</p>';
 						}
 					} );
 				}
@@ -46,11 +54,12 @@
 	var getWidgetById = widgetTestsTools.getWidgetById,
 		assertRelations = lineutilsTestsTools.assertRelations;
 
-	function dragstart( editor, evt, widget ) {
-		var dropTarget = CKEDITOR.plugins.clipboard.getDropTarget( editor );
+	function dragstart( editor, evt, widgetOrNode ) {
+		var dropTarget = CKEDITOR.plugins.clipboard.getDropTarget( editor ),
+			dragTarget = getDragEventTarget( widgetOrNode );
 
-		// Use realistic target which is the drag handler.
-		evt.setTarget( widget.dragHandlerContainer.findOne( 'img' ) );
+		// Use realistic target which is the drag handler or the element.
+		evt.setTarget( dragTarget );
 
 		dropTarget.fire( 'dragstart', evt );
 	}
@@ -68,13 +77,22 @@
 		dropTarget.fire( 'drop', evt );
 	}
 
-	function dragend( editor, evt, widget ) {
-		var dropTarget = CKEDITOR.env.ie && CKEDITOR.env.version < 9 ? editor.editable() : editor.document;
+	function dragend( editor, evt, widgetOrNode ) {
+		var dropTarget = CKEDITOR.env.ie && CKEDITOR.env.version < 9 ? editor.editable() : editor.document,
+			dragTarget = getDragEventTarget( widgetOrNode );
 
-		// Use realistic target which is the drag handler.
-		evt.setTarget( widget.dragHandlerContainer.findOne( 'img' ) );
+		// Use realistic target which is the drag handler or the element.
+		evt.setTarget( dragTarget );
 
 		dropTarget.fire( 'dragend', evt );
+	}
+
+	function getDragEventTarget( widgetOrNode ) {
+		if ( !widgetOrNode.dragHandlerContainer ) {
+			return widgetOrNode;
+		}
+
+		return widgetOrNode.dragHandlerContainer.findOne( 'img' );
 	}
 
 	bender.test( {
@@ -279,6 +297,95 @@
 
 				assert.areSame( '<p><span data-widget="testwidget" id="w1">foo</span></p>', editor.getData() );
 				assert.areSame( 0, widgetWasDestroyed, 'Original widget should not be destroyed' );
+			} );
+		},
+
+		// (#3138)
+		'test drag and drop with shadowed clipboard html (single widget)': function() {
+			var editor = this.editor;
+
+			this.editorBot.setData( '<p><span data-widget="testwidget5" id="w1">foo</span></p>', function() {
+				var evt = { data: bender.tools.mockDropEvent() },
+					range = editor.createRange();
+
+				editor.focus();
+
+				bender.tools.resumeAfter( editor, 'afterPaste', function() {
+					assert.areEqual( '<p>foobar</p>', editor.getData() );
+				} );
+
+				// Ensure async.
+				wait( function() {
+					var widget = getWidgetById( editor, 'w1' );
+
+					dragstart( editor, evt.data, widget );
+
+					CKEDITOR.plugins.clipboard.initDragDataTransfer( evt );
+					evt.data.dataTransfer.setData( 'cke/widget-id', widget.id );
+
+					range.setStartBefore( widget.wrapper );
+					evt.data.testRange = range;
+
+					drop( editor, evt.data, range );
+
+					dragend( editor, evt.data, widget );
+				} );
+			} );
+		},
+
+		// (#3441)
+		'test drag and drop with shadowed clipboard html (multiple widgets)': function() {
+			if ( !CKEDITOR.plugins.clipboard.isCustomDataTypesSupported ) {
+				assert.ignore();
+			}
+
+			var editor = this.editor,
+				dragHtml = '<p>Lorem <span data-widget="testwidget5" id="w1">foo</span> ipsum <span data-widget="testwidget5" id="w2">bar</span> dolor</p>',
+				initialHtml = dragHtml + '<p>Drop zone</p>';
+
+			this.editorBot.setData( initialHtml, function() {
+				var evt = { data: bender.tools.mockDropEvent() };
+
+				editor.resetUndo();
+				editor.focus();
+
+				bender.tools.resumeAfter( editor, 'afterPaste', function() {
+					var expectedRegex = /<p>Dr<\/p><p>Lorem<\/p><p>foobar<\/p><p>ipsum<\/p><p>foobar<\/p><p>dolor<\/p>(<p>(\s|&nbsp;)*?<\/p>)<p>op zone<\/p>/,
+						undoManager = editor.undoManager;
+
+					assert.isTrue( undoManager.undoable(), 'dnd is undoable' );
+					assert.isMatching( expectedRegex, editor.getData(), 'Editor data' );
+
+					undoManager.undo();
+
+					assert.areSame( initialHtml, editor.getData(), 'Editor content afer undo' );
+					assert.isFalse( undoManager.undoable(), 'dnd after undo is not undoable' );
+				} );
+
+				// Ensure async.
+				wait( function() {
+					var editable = editor.editable(),
+						paragraphs = editable.find( 'p' ).toArray(),
+						dragTarget = paragraphs[ 0 ].getChild( 1 ),
+						dropTarget = paragraphs[ 1 ].getChild( 0 ),
+						dragRange = editor.createRange(),
+						dropRange = editor.createRange();
+
+					dragRange.selectNodeContents( paragraphs[ 0 ] );
+					dragRange.select();
+
+					dragstart( editor, evt.data, dragTarget );
+
+					CKEDITOR.plugins.clipboard.initDragDataTransfer( evt );
+					evt.data.dataTransfer.setData( 'text/html', dragHtml );
+
+					dropRange.setStart( dropTarget, 2 );
+					evt.data.testRange = dropRange;
+
+					drop( editor, evt.data, dropRange );
+
+					dragend( editor, evt.data, dragTarget );
+				} );
 			} );
 		},
 

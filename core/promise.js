@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -11,15 +11,24 @@
 	if ( window.Promise ) {
 		CKEDITOR.tools.promise = Promise;
 	} else {
-		var polyfillURL = CKEDITOR.getUrl( 'vendor/promise.js' );
+		var polyfillURL = CKEDITOR.getUrl( 'vendor/promise.js' ),
+			isAmdEnv = typeof window.define === 'function' && window.define.amd && typeof window.require === 'function';
+
+		if ( isAmdEnv ) {
+			return window.require( [ polyfillURL ], function( Promise ) {
+				CKEDITOR.tools.promise = Promise;
+			} );
+		}
 
 		CKEDITOR.scriptLoader.load( polyfillURL, function( success ) {
-			if ( success ) {
-				CKEDITOR.tools.promise = ES6Promise;
-			} else {
-				CKEDITOR.error( 'no-vendor-lib', {
+			if ( !success ) {
+				return CKEDITOR.error( 'no-vendor-lib', {
 					path: polyfillURL
 				} );
+			}
+
+			if ( typeof window.ES6Promise !== 'undefined' ) {
+				return CKEDITOR.tools.promise = ES6Promise;
 			}
 		} );
 	}

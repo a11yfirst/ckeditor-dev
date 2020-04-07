@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -17,8 +17,8 @@
 
 	// #### table selection : START
 	// @param {CKEDITOR.dom.range[]} ranges
-	// @param {Boolean} allowPartially Whether a collapsed selection within table is recognized to be a valid selection.
-	// This happens for WebKits on MacOS, when you right click inside the table.
+	// @param {Boolean} allowPartially Whether a collapsed selection within a table is recognized to be a valid selection.
+	// This happens for WebKit browsers on MacOS when you right-click inside the table.
 	function isTableSelection( ranges, allowPartially ) {
 		if ( ranges.length === 0 ) {
 			return false;
@@ -800,18 +800,27 @@
 			// Browsers could loose the selection once the editable lost focus,
 			// in such case we need to reproduce it by saving a locked selection
 			// and restoring it upon focus gain.
-			if ( CKEDITOR.env.ie || isInline ) {
+			// Firefox native selection is lost editor.focus is triggered by click (#3136).
+			if ( CKEDITOR.env.ie || CKEDITOR.env.gecko || isInline ) {
 				// For old IEs, we can retrieve the last correct DOM selection upon the "beforedeactivate" event.
 				// For the rest, a more frequent check is required for each selection change made.
-				if ( isMSSelection )
+				if ( isMSSelection ) {
 					editable.attachListener( editable, 'beforedeactivate', saveSel, null, null, -1 );
-				else
+				} else {
 					editable.attachListener( editor, 'selectionCheck', saveSel, null, null, -1 );
+				}
 
 				// Lock the selection and mark it to be restored.
 				// On Webkit&Gecko (#1113) we use focusout which is fired more often than blur. I.e. it will also be
 				// fired when nested editable is blurred.
 				editable.attachListener( editable, CKEDITOR.env.webkit || CKEDITOR.env.gecko ? 'focusout' : 'blur', function() {
+					var isFakeOrSingleSelection = lastSel && ( lastSel.isFake || lastSel.getRanges().length < 2 );
+
+					// Ignore cases that doesn't produce issue in Firefox (#3136).
+					if ( CKEDITOR.env.gecko && !isInline && isFakeOrSingleSelection ) {
+						return;
+					}
+
 					editor.lockSelection( lastSel );
 					restoreSel = 1;
 				}, null, null, -1 );
@@ -932,16 +941,7 @@
 
 			if ( CKEDITOR.env.ie ) {
 				// https://dev.ckeditor.com/ticket/14407 - Don't even let anything happen if the selection is in a non-editable element.
-				editable.attachListener( editable, 'keydown', function( evt ) {
-					var sel = this.getSelection( 1 ),
-						ascendant = getNonEditableAscendant( sel );
-
-					// Prevent changing selection when an ascendant is an entire editable (#1632).
-					if ( ascendant && !ascendant.equals( editable ) ) {
-						sel.selectElement( ascendant );
-						evt.data.preventDefault();
-					}
-				}, editor );
+				editable.attachListener( editable, 'keydown', disableSelectionChangeForNonEditables, editor );
 			}
 
 			// Always fire the selection change on focus gain.
@@ -1028,6 +1028,34 @@
 				// The parentElement may be null for read only mode in IE10 and below (https://dev.ckeditor.com/ticket/9780).
 				if ( sel.type != 'None' && range.parentElement() && range.parentElement().ownerDocument == doc.$ )
 					range.select();
+			}
+
+			function disableSelectionChangeForNonEditables( evt ) {
+				var sel,
+					ascendant;
+
+				// Allow on typing inside editable elements of widgets if those are currently focused (#3587)
+				if ( isTypingElement( this.document.getActive() ) ) {
+					return;
+				}
+
+				sel = this.getSelection( 1 );
+				ascendant = getNonEditableAscendant( sel );
+
+				// Prevent changing selection when an ascendant is an entire editable (#1632).
+				if ( ascendant && !ascendant.equals( editable ) ) {
+					sel.selectElement( ascendant );
+					evt.data.preventDefault();
+				}
+			}
+
+			function isTypingElement( activeElement ) {
+				if ( !activeElement ) {
+					return false;
+				}
+
+				return activeElement.getName() === 'input' ||
+					activeElement.getName() === 'textarea';
 			}
 
 			function getNonEditableAscendant( sel ) {
@@ -1201,6 +1229,24 @@
 		// Editable element might be absent or editor might not be in a wysiwyg mode.
 		var editable = this.editable();
 		return editable && this.mode == 'wysiwyg' ? new CKEDITOR.dom.selection( editable ) : null;
+	};
+
+	/**
+	 * Retrieves the {@link CKEDITOR.dom.range} instances that represent the current selection.
+	 *
+	 * **Note:** This function is an alias for the {@link CKEDITOR.dom.selection#getRanges} method.
+	 *
+	 * @method
+	 * @since 4.14.0
+	 * @member CKEDITOR.editor
+	 * @param {Boolean} [onlyEditables] If set to `true`, this function retrieves editable ranges only.
+	 * @returns {Array} Range instances that represent the current selection.
+	 */
+	CKEDITOR.editor.prototype.getSelectedRanges = function( onlyEditables ) {
+		var selection = this.getSelection(),
+			ranges = selection && selection.getRanges( onlyEditables );
+
+		return ranges || [];
 	};
 
 	/**
@@ -1897,8 +1943,9 @@
 		 * @todo
 		 */
 		unlock: function( restore ) {
-			if ( !this.isLocked )
+			if ( !this.isLocked ) {
 				return;
+			}
 
 			if ( restore ) {
 				var selectedElement = this.getSelectedElement(),
@@ -1909,23 +1956,39 @@
 			this.isLocked = 0;
 			this.reset();
 
-			if ( restore ) {
-				// Saved selection may be outdated (e.g. anchored in offline nodes).
-				// Avoid getting broken by such.
-				var common = selectedElement || ranges[ 0 ] && ranges[ 0 ].getCommonAncestor();
-				if ( !( common && common.getAscendant( 'body', 1 ) ) )
-					return;
-
-				if ( isTableSelection( ranges ) ) {
-					// Tables have it's own selection method.
-					performFakeTableSelection.call( this, ranges );
-				} else if ( faked )
-					this.fake( selectedElement );
-				else if ( selectedElement )
-					this.selectElement( selectedElement );
-				else
-					this.selectRanges( ranges );
+			if ( !restore ) {
+				return;
 			}
+
+			// Saved selection may be outdated (e.g. anchored in offline nodes).
+			// Avoid getting broken by such.
+			var common = selectedElement || ranges[ 0 ] && ranges[ 0 ].getCommonAncestor();
+
+			if ( !( common && common.getAscendant( 'body', 1 ) ) ) {
+				return;
+			}
+
+			var editor = this.root.editor;
+
+			// Use fake selection on tables only with tableselection plugin (#3136).
+			if ( editor.plugins.tableselection && isTableSelection( ranges ) ) {
+				// Tables have it's own selection method.
+				performFakeTableSelection.call( this, ranges );
+				return;
+			}
+
+			if ( faked ) {
+				this.fake( selectedElement );
+				return;
+			}
+
+			// When browser supports multi-range selection prioritize restoring ranges (#3136).
+			if ( selectedElement && ranges.length < 2 ) {
+				this.selectElement( selectedElement );
+				return;
+			}
+
+			this.selectRanges( ranges );
 		},
 
 		/**
