@@ -84,10 +84,10 @@
 1. After creating a new distribution version, depending on how much time has
    elapsed since the last distribution, it may be desirable to merge in all
    changes from the upstream repository from which plugins-dev was forked,
-   namely `https://github.com/ckeditor/ckeditor-dev`. Roughly speaking, this
+   namely `https://github.com/ckeditor/ckeditor4`. Roughly speaking, this
    involves the following two steps:
-   1. merge the upstream/master branch into the local master branch
-   1. merge the local master branch into the a11yfirst branch
+   1. merge the upstream/major branch into the local master branch
+   1. merge the local master branch into the a11yfirst-master branch
 
 1. By merging in the upstream changes after a new distribution has been
    released, it allows for new development to proceed with the latest CKEditor

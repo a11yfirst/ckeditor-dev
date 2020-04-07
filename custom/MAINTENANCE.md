@@ -25,16 +25,11 @@ Once the upstream commits have been merged into `a11yfirst-master`, we then
 need to test all of our plugins to ensure that none of the changes/commits
 have had any undesirable effects on our code.
 
-### Initialization
-
-1. Make sure the `plugins-dev` working copy is up to date:
-
-   `git pull`
-
 ### Merge `upstream/major` branch changes into `plugins-dev/master`
 
 1. Add a remote, by convention named `upstream`, that references the CKEditor
-   repository whose changes we want to incorporate:
+   repository from which our project was forked, and that contains the changes
+   we want to incorporate:
 
    `git remote add upstream https://github.com/ckeditor/ckeditor4`
 
@@ -46,7 +41,8 @@ have had any undesirable effects on our code.
 
    `git checkout master`
 
-1. Merge the changes from `upstream/major` and push to `origin`:
+1. Merge the changes from `upstream/major` and push to our remote `master`
+   branch on `origin`:
 
    `git merge upstream/major`
 
@@ -62,6 +58,8 @@ have had any undesirable effects on our code.
 
    `git checkout a11yfirst-master`
 
+   `git pull # make sure branch is up to date`
+
    `git merge master`
 
 1. Test the functionality of the A11yFirst plugins.
@@ -74,5 +72,16 @@ have had any undesirable effects on our code.
 1. Follow the instructions in the `DISTRIBUTION.md` document to create a new
    distribution version of A11yFirst using CKBuilder. Note that CKBuilder will
    create a downloadable distribution based on the latest major version, which
-   should correspond to the upstream `major` branch.
+   should correspond to the latest version in the `upstream/major` branch.
+
+## Notes
+
+1. During the heavier development phase of A11yFirst, we tracked the `master`
+   branch of what was then called `ckeditor-dev`, now renamed to `ckeditor4`.
+   Now that we are in more of a maintenance phase, we determined that it would
+   be beneficial to track the `ckeditor4/major` branch instead, to merge in
+   updates on a release-by-release basis.
+
+2. Going forward, the A11yFirst CHANGELOG should indicate for each A11yFirst
+   version, the CKEditor 4 version against which it was tested.
 
