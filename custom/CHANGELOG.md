@@ -2,6 +2,12 @@
 
 All notable changes to the A11yFirst project will be documented in this file.
 
+## v1.2.4 — 7 Apr 2020
+
+### Updates
+
+* Create new distribution to incorporate security updates in CKEditor v4.14
+
 ## v1.2.3 — 16 Sep 2019
 
 ### Updates
