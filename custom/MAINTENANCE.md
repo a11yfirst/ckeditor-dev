@@ -37,7 +37,7 @@ have had any undesirable effects on our code.
 
    `git fetch upstream`
 
-1. Checkout the `plugins-dev` repository's local master branch:
+1. Checkout the `plugins-dev` repository's local `master` branch:
 
    `git checkout master`
 
@@ -70,9 +70,10 @@ have had any undesirable effects on our code.
    `git push # assumes a11yfirst-master is current branch`
 
 1. Follow the instructions in the `DISTRIBUTION.md` document to create a new
-   distribution version of A11yFirst using CKBuilder. Note that CKBuilder will
-   create a downloadable distribution based on the latest major version, which
-   should correspond to the latest version in the `upstream/major` branch.
+   distribution version of A11yFirst using the CKEditor 4 Builder app. Note
+   that the Builder app will create a downloadable distribution based on the
+   latest major version, which should correspond to the latest version in the
+   `upstream/major` branch.
 
 ## Notes
 
@@ -84,4 +85,3 @@ have had any undesirable effects on our code.
 
 2. Going forward, the A11yFirst CHANGELOG should indicate for each A11yFirst
    version, the CKEditor 4 version against which it was tested.
-

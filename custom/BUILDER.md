@@ -11,7 +11,7 @@ for Step #3.
 
 **Note #2:** A11yFirst has created its own modified version of Accessibiity
 Checker, and our `syncdist.sh` script handles adding its files to our
-distribution. But when using CKBuilder to build the foundation for our
+distribution. But when using the Builder app to build the foundation for our
 distribution, we need to add its dependency, namely the `balloonpanel` plugin.
 
 ## Step-by-step instructions
